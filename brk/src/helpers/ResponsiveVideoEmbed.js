@@ -1,7 +1,7 @@
 /* A simple iframe wrapper that makes 16:9 responsive embed */
 import React from 'react';
-
-export default ({ url, background="black", className="video" }) => {
+import YouTube from 'react-youtube';
+export default ({ url, background="green", className="video" }) => {
   return (
     <div
       className={className}

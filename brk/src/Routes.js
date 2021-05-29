@@ -10,7 +10,8 @@ import Whyus from "./Page/Whyus"
 import Contacts from "./Page/Contacts"
 
 import AgencyPage from "./Page/AgencyLandingPage"
-
+// Admin Dashboard
+import AdminDash from "Page/Admin/AdminDash";
 
 const Routes = () => {
     return(
@@ -23,6 +24,10 @@ const Routes = () => {
                 <Route path="/how" exact component={Howitworks}/>
                 <Route path="/why" exact component={Whyus}/>
                 <Route path="/contacts" exact component={Contacts}/>
+
+
+                <Route path="/brk/admin" exact component={AdminDash}/>
+
 
 
             </Switch>

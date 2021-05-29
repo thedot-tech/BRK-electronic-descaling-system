@@ -1,5 +1,9 @@
 import React from "react";
 import tw from "twin.macro";
+
+import firebase from 'firebase'
+import { connect } from 'react-firebase'
+
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
@@ -14,6 +18,28 @@ const TextColumn = styled(Column)(props => [
   tw`md:w-7/12 mt-16 md:mt-0`,
   props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
+
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCApad_Ykkvn5_df5lT2RD8CAlKmKhAoEw",
+  authDomain: "brk-systems.firebaseapp.com",
+  projectId: "brk-systems",
+  storageBucket: "brk-systems.appspot.com",
+  messagingSenderId: "27842869867",
+  appId: "1:27842869867:web:89dd9e8774f215d6b00f2e",
+  measurementId: "G-66Z7E8LP91"
+};
+  // Initialize Firebase
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+ }else {
+    firebase.app(); // if already initialized, use that one
+ }
+
+
 
 const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
@@ -52,6 +78,10 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
+
+              {/* TODO Here we need to add more fields and firebase integration */}
+              
+
             <Form action={formAction} method={formMethod}>
               <Input type="email" name="email" placeholder="Your Email Address" />
               <SubmitButton type="submit">{submitButtonText}</SubmitButton>

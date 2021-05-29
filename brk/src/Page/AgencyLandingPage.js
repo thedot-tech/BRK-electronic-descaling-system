@@ -16,6 +16,11 @@ import ContactUsForm from "components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
 
+
+import Client_One from "../images/client_one@2x.png"
+import Client_Two from "../images/client_two@2x.png"
+
+
 export default () => (
   <AnimationRevealPage>
     <Hero />
@@ -36,23 +41,23 @@ export default () => (
       testimonials={[
         {
           imageSrc:
-            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+          Client_One,
           profileImageSrc:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
+            "",
           quote:
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-          customerName: "Charlotte Hale",
-          customerTitle: "CEO, Tesla Inc."
+            "Great Product for Water treatment",
+          customerName: "Kumar",
+          customerTitle: "Farmer"
         },
         {
           imageSrc:
-            "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
+          Client_Two,
           profileImageSrc:
-            "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-          quote:
-            "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-          customerName: "Adam Cuppy",
-          customerTitle: "Founder, Nestle"
+            "",
+            quote:
+            "Great Product for Water treatment",
+          customerName: "Kumar",
+          customerTitle: "Farmer"
         }
       ]}
       textOnLeft={true}
@@ -68,8 +73,6 @@ export default () => (
         </>
       }
     />
-    <Blog />
-    <ContactUsForm />
     <Footer />
   </AnimationRevealPage>
 );
