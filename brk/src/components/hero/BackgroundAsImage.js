@@ -69,7 +69,7 @@ export default () => {
       <NavLink href="#">
         Why us?
       </NavLink>
-      <NavLink href="#">
+      <NavLink href="/contacts">
         Contacts
       </NavLink>
     </NavLinks>,

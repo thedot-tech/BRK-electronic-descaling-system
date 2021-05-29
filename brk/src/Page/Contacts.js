@@ -1,11 +1,11 @@
 import React from 'react'
+import Contact from "../components/forms/TwoColContactUsWithIllustration"
+
 
 export default function Contacts() {
     return (
         <div>
-            <h3>
-            Contacts
-            </h3>
+            <Contact/>
         </div>
     )
 }
