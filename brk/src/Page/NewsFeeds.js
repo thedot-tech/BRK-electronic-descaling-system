@@ -2,6 +2,9 @@ import React from "react";
 import tw from 'twin.macro' //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
 
+import firebase from 'firebase'
+import { connect } from 'react-firebase'
+
 import styled from "styled-components";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
@@ -41,6 +44,31 @@ const Image = styled.div(props => [
     tw`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`
   ]);
   
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCApad_Ykkvn5_df5lT2RD8CAlKmKhAoEw",
+    authDomain: "brk-systems.firebaseapp.com",
+    projectId: "brk-systems",
+    storageBucket: "brk-systems.appspot.com",
+    messagingSenderId: "27842869867",
+    appId: "1:27842869867:web:89dd9e8774f215d6b00f2e",
+    measurementId: "G-66Z7E8LP91"
+  };
+    // Initialize Firebase
+  
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+   }else {
+      firebase.app(); // if already initialized, use that one
+   }
+  
+
+
+
+
+
+
 export default function NewsFeeds() {
     return (
         <Container>
