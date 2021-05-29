@@ -4,6 +4,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
 import Hero from "components/hero/BackgroundAsImage.js";
+import News from "./NewsFeeds"
 import Features from "components/features/DashedBorderSixFeatures";
 import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
 import MainFeature2 from "components/features/TwoColWithTwoFeaturesAndButtons.js";
@@ -18,8 +19,9 @@ import customerSupportIllustrationSrc from "images/customer-support-illustration
 export default () => (
   <AnimationRevealPage>
     <Hero />
+    <News/>
+
     <MainFeature />
-    
     <Features />
     <MainFeature2 />
     <Portfolio />

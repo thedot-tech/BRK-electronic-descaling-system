@@ -83,7 +83,7 @@ export default () => {
   return (
     <Container>
       <ThreeColumnContainer>
-        <Heading>Why choose <span tw="text-green-700">our product?</span></Heading>
+      <Heading>Why choose <span tw="text-green-700">our product?</span></Heading>
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
