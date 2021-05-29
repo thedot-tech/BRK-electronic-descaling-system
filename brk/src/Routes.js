@@ -9,7 +9,7 @@ import Howitworks from "./Page/Howitworks"
 import Whyus from "./Page/Whyus"
 import Contacts from "./Page/Contacts"
 
-
+import AgencyPage from "./Page/AgencyLandingPage"
 
 
 const Routes = () => {
@@ -18,7 +18,7 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
 
-                <Route path="/" exact component={Landing}/>
+                <Route path="/" exact component={AgencyPage}/>
                 <Route path="/about" exact component={About}/>
                 <Route path="/how" exact component={Howitworks}/>
                 <Route path="/why" exact component={Whyus}/>
