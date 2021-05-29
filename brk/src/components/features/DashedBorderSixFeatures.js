@@ -9,7 +9,7 @@ import defaultCardImage from "../../images/shield-icon.svg";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "../../images/svg-decorator-blob-3.svg";
 // TODO Change color of logos or make logos
-import SupportIconImage from "../../images/support-icon.svg";
+import SupportIconImage from "../../images/fast-icon.svg";
 import ShieldIconImage from "../../images/shield-icon.svg";
 import CustomizeIconImage from "../../images/customize-icon.svg";
 import FastIconImage from "../../images/fast-icon.svg";
@@ -65,19 +65,17 @@ export default () => {
   const cards = [
     {
       imageSrc: ShieldIconImage,
-      title: "Ads Management",
+      title: "Safe Water",
       description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
     },
-    { imageSrc: SupportIconImage, title: "Video Marketing",
+    { imageSrc: SupportIconImage, title: "More yield",
     description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
   
   },
-    { imageSrc: CustomizeIconImage, title: "Customer Relation" ,
-    description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
+    { imageSrc: CustomizeIconImage, title: "Economic" ,
+    description: "Less Fertilizer Cost-30% De-Scaling of Piping Unclogged Water Jets Less Energy Required to Pump and Irrigate"
   },
-    { imageSrc: ReliableIconImage, title: "Product Outreach" },
-    { imageSrc: FastIconImage, title: "PR Campaign" },
-    { imageSrc: SimpleIconImage, title: "Product Expansion" }
+  
   ];
 
   return (
