@@ -89,7 +89,7 @@ export default ({
       title: `Is an eco-friendly
       water treatment system that protects your piping system andappliances
       against scale deposits and rust.`,
-      durationText: "90 Days Campaign",
+      durationText: "12 Years Warrenty",
       locationText: "India, Tamil Nadu"
     },
     {

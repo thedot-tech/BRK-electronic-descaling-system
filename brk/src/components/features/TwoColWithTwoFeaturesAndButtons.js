@@ -9,6 +9,8 @@ import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sig
 import { ReactComponent as PowerIcon } from "feather-icons/dist/icons/power.svg";
 import { ReactComponent as HeartIcon } from "feather-icons/dist/icons/heart.svg";
 
+import Process from "../../images/tech@2x.png"
+
 
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 
@@ -47,7 +49,7 @@ const FeatureIconContainer = styled.div `
 `;
 
 const FeatureText = tw.div`mt-4 md:mt-0 md:ml-4 text-center md:text-left`;
-const FeatureHeading = tw.div`font-bold text-lg text-primary-500`;
+const FeatureHeading = tw.div`font-bold text-lg text-green-700`;
 const FeatureDescription = tw.div`mt-1 text-sm`;
 
 const PrimaryButton = tw(PrimaryButtonBase)`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
@@ -86,7 +88,7 @@ water with carbon dioxide cannot dissolve existing scale. From this all results 
 installation of DESCALER device in older water systems with scale deposits, the water from
 the tap may temporarily contain even higher amount of calcium than untreated water. The 
 time of descaling process depends on water usage`,
-  primaryButtonText = "See Our Portfolio",
+  primaryButtonText = "Working",
   primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true
@@ -133,7 +135,7 @@ time of descaling process depends on water usage`,
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={TeamIllustrationSrc} />
+          <Image imageSrc={Process} />
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>

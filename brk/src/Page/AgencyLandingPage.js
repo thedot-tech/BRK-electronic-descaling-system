@@ -32,7 +32,7 @@ export default () => (
           Our Clients <span tw="text-blue-500">Love Us.</span>
         </>
       }
-      description="Here are what some of our amazing customers are saying about our marketing professionals. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
       testimonials={[
         {
           imageSrc:
