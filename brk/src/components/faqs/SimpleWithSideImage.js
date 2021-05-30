@@ -54,27 +54,33 @@ export default ({
    */
   const defaultFaqs = [
     {
-      question: "Question 1",
+      question: "What happen to the salt in the treated water? ",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "BRK SYSTEMS structure water device cancels the  crystallization process in the salt molecules so the minerals can get easily observed by plants."
     },
     {
-      question: "Question 2",
+      question: "Any replacement or maintenance required?",
 
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "No replacement or maintenance required for BRK SYSTEMS structured water device."
     },
     {
-      question: "Question 3",
+      question: "What will happen  to the already blocked or deposited salt in the pipeline system?",
 
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "BRK SYSTEMS structure water device automatically removes the blocked or deposited salt   in the pipeline on day by day process."
     },
     {
-      question: "Question 4",
+      question: "What is the installation process?",
 
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "BRK SYSTEMS structure water device installation process is so simple. Doesn't make any physical changes in the existing pipeline system. BRK SYSTEMS structure water device becomes two  C type pieces and placed around the pipe and bolted.its an easy and 2 minutes process."
+    },
+    {
+      question: "Electricity or chemical involved in the process?",
+
+      answer:
+        "BRK SYSTEMS structure water device is highly eco-friendly and no electricity or any chemicals involved in the process."
     }
   ];
 
