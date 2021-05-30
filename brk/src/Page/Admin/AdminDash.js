@@ -32,6 +32,7 @@ export default function AdminDash() {
 
 
     const [addNews, setaddNews] = useState(false);
+    const [addVideo, setaddVideo] = useState(false);
     // News startes
         const [heading, setheading] = useState('');
         const [news, setnews] = useState('');
@@ -70,7 +71,30 @@ export default function AdminDash() {
         
     
     }
+    const saveVideo = e => {
+        e.preventDefault();
+        const uid = shortid.generate();
+         firebase.database().ref(`/video/${uid}`)
+         .set(
+           {  url,
+             id:uid,
+             date:Date.now()}
+         ).then(
+            console.log("Saved Data"),
 
+            seturl(''),
+            setsuccess(true),
+
+            
+
+         ).catch(err => 
+            console.log(err)
+            
+            )
+
+        
+    
+    }
     const savedSuccess = () => {
         if(success)
        { return(
@@ -85,9 +109,18 @@ export default function AdminDash() {
             setheading(event.target.value);
         else if(name === 'news')
             setnews(event.target.value);
+        else if(name === 'url')
+            seturl(event.target.value);
     }
     const addNewsBtn = () => {
         setaddNews(true)
+        setaddVideo(false)
+
+    }
+    const addVideoBtn = () => {
+        setaddVideo(true)
+        setaddNews(false)
+
     }
     const addNewsSection = () => {
         if(addNews){
@@ -113,7 +146,26 @@ export default function AdminDash() {
             )
         }
     }
-
+    const addVideoSection = () => {
+        if(addVideo)
+       {
+            return(
+                <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Add URL</Form.Label>
+                  <Form.Control type="text" placeholder="Enter News Heading" value={url} onChange={newsChangeHandler('url')}/>
+                  
+                </Form.Group>
+              
+              
+              
+                <Button variant="primary" type="submit" block onClick={saveVideo}>
+                  Submit
+                </Button>
+              </Form>
+        )
+    }
+    }
 
     const onChangeHandler = (event) => {
         setpassword(event.target.value);
@@ -160,7 +212,7 @@ export default function AdminDash() {
     </Button>
         </Col>
         <Col>
-        <Button variant="dark" size="lg">
+        <Button variant="dark" size="lg" onClick={addVideoBtn}>
         Add Videos
     </Button>
         </Col>
@@ -181,7 +233,7 @@ export default function AdminDash() {
                <div style={{marginTop:50}}>
 {savedSuccess()}
                {addNewsSection()}
-
+                {addVideoSection()}
                </div>
                    </div>
         {!showDashs ? 
