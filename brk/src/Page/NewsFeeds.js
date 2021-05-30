@@ -99,14 +99,20 @@ export default function NewsFeeds() {
 
 
   const settings = {
-    dots: true,
+
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
+    vertical: true,
+    verticalSwiping: true,
     autoplay: true,
+    className: "center",
+
     speed: 1000,
-    autoplaySpeed: 2000,
-    cssEase: "linear"
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    dots: false,
+
   };
 
 
@@ -117,13 +123,12 @@ export default function NewsFeeds() {
         <Container >
             <br/>
               <Heading tw="text-center mt-5">News and <span tw=" text-green-900">feeds.</span></Heading>
-        <div>
+        <div style={{ marginTop:30}}>
         
 
-        <div style={{marginTop:50}}>
        
 
-<div>
+<Container>
 <Slider {...settings}>
 
 {news ? (news.map((k) => {
@@ -131,7 +136,7 @@ export default function NewsFeeds() {
 
          
           <div >
-          <Card style={{ width: '18rem' }}>
+          <Card>
   <Card.Body>
     <Card.Title>{k.heading}</Card.Title>
     <Card.Subtitle className="mb-2 text-muted">News</Card.Subtitle>
@@ -142,6 +147,7 @@ export default function NewsFeeds() {
  
   </Card.Body>
 </Card>
+<br/>
           </div>
 
 
@@ -157,10 +163,9 @@ export default function NewsFeeds() {
   }
         </Slider>
 
-</div>       
+</Container>       
 
       </div>
-          </div>
         
         </Container>
     )

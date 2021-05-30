@@ -5,6 +5,7 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
 import Hero from "components/hero/BackgroundAsImage.js";
 import News from "./NewsFeeds"
+import VideoSection from "./VideoSection"
 import Features from "components/features/DashedBorderSixFeatures";
 import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
 import MainFeature2 from "components/features/TwoColWithTwoFeaturesAndButtons.js";
@@ -25,7 +26,7 @@ export default () => (
   <AnimationRevealPage>
     <Hero />
     <News/>
-
+    <VideoSection/>
     <MainFeature />
     <Features />
     <MainFeature2 />
