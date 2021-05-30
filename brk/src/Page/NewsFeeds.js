@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from 'twin.macro' //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
-
+import { Form, Button, Alert, Row, Col, Card } from 'react-bootstrap'
+import moment from "moment";
 import firebase from 'firebase'
 import { connect } from 'react-firebase'
+import Slider from "react-slick";
 
 import styled from "styled-components";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
@@ -68,13 +70,97 @@ const Image = styled.div(props => [
 
 
 
-
 export default function NewsFeeds() {
+
+
+  const [news, setnews] = useState('');
+  const [videos, setvideos] = useState('');
+
+  useEffect(() => {
+    getAllNews()
+    getAllVideos()
+  }, [])
+  
+  const getAllNews = () => {
+    firebase.database().ref("/news").on(`value`, 
+      snapshot => {
+        setnews(Object.values(snapshot.val()));
+      }
+    )
+  }
+
+  const getAllVideos = () => {
+    firebase.database().ref("/video").on(`value`, 
+      snapshot => {
+        setvideos(Object.values(snapshot.val()));
+      }
+    )
+  }
+
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 2000,
+    cssEase: "linear"
+  };
+
+
     return (
-        <Container>
+
+
+
+        <Container >
             <br/>
               <Heading tw="text-center mt-5">News and <span tw=" text-green-900">feeds.</span></Heading>
+        <div>
+        
+
+        <div style={{marginTop:50}}>
        
+
+<div>
+<Slider {...settings}>
+
+{news ? (news.map((k) => {
+      return(
+
+         
+          <div >
+          <Card style={{ width: '18rem' }}>
+  <Card.Body>
+    <Card.Title>{k.heading}</Card.Title>
+    <Card.Subtitle className="mb-2 text-muted">News</Card.Subtitle>
+    <Card.Text>
+      {k.news}
+    </Card.Text>
+    <Card.Link href="#">{moment().startOf(k.date).fromNow()}</Card.Link>
+ 
+  </Card.Body>
+</Card>
+          </div>
+
+
+      
+      )
+    })) : (
+      <div>
+        <h4>
+          Loading .... 
+        </h4>
+        </div>
+    )
+  }
+        </Slider>
+
+</div>       
+
+      </div>
+          </div>
         
         </Container>
     )
