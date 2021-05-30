@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import { Container, Form,Button,Alert,Row,Col } from 'react-bootstrap'
+import React,{useState,useEffect} from 'react'
+import { Container, Form,Button,Alert,Row,Col,Card } from 'react-bootstrap'
 
 
 import firebase from 'firebase'
@@ -26,6 +26,25 @@ const firebaseConfig = {
 
 export default function AdminDash() {
 
+    const [datas, setdatas] = useState('')
+
+    useEffect(() => {
+        getAllClientsData()
+    }, [])
+
+    const getAllClientsData = () => {
+        firebase.database().ref("/contacts").on(
+            'value',
+            snapshot => {
+                setdatas(Object.values(snapshot.val()))
+            }
+        )
+    }
+    const showAllDatas = () => {
+ 
+        
+    }
+
     const [password, setpassword] = useState(null);
     const [showa, setshowa] = useState(false);
     const [showDashs, setshowDash] = useState(false);
@@ -33,6 +52,7 @@ export default function AdminDash() {
 
     const [addNews, setaddNews] = useState(false);
     const [addVideo, setaddVideo] = useState(false);
+    const [seeClient, setseeClients] = useState(false)
     // News startes
         const [heading, setheading] = useState('');
         const [news, setnews] = useState('');
@@ -115,11 +135,20 @@ export default function AdminDash() {
     const addNewsBtn = () => {
         setaddNews(true)
         setaddVideo(false)
+        setseeClients(false)
 
     }
     const addVideoBtn = () => {
         setaddVideo(true)
         setaddNews(false)
+        setseeClients(false)
+
+
+    }
+    const seeClients = () => {
+        setaddVideo(false)
+        setaddNews(false)
+        setseeClients(true)
 
     }
     const addNewsSection = () => {
@@ -201,7 +230,7 @@ export default function AdminDash() {
       <Row>
         <Col>
         <div className="mb-2">
-    <Button variant="success" size="lg">
+    <Button variant="success" size="lg" onClick={seeClients}>
     See Clients
     </Button>
   </div>
@@ -223,6 +252,9 @@ export default function AdminDash() {
         
     }
 
+
+ 
+
     return (
         <div>
            <Container className="mt-lg-5">
@@ -234,6 +266,34 @@ export default function AdminDash() {
 {savedSuccess()}
                {addNewsSection()}
                 {addVideoSection()}
+                {datas && seeClient ? (
+          console.log(datas),
+          datas.map((key) => {
+          
+              return ( <div>
+                  <Card>
+                <Card.Body>
+                <Card.Text>
+               Email {key.email}
+    </Card.Text>
+    <Card.Text>
+               Phone {key.phone}
+    </Card.Text>
+                    </Card.Body>
+                    </Card>
+                <br/>
+                </div>)
+            
+          })
+        )
+        : (
+            <Card body>Loading...</Card>
+
+        )
+
+
+
+                }
                </div>
                    </div>
         {!showDashs ? 
