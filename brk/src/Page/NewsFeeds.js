@@ -128,7 +128,7 @@ export default function NewsFeeds() {
 
        
 
-<Container>
+<Container style={{padding:20}}>
 <Slider {...settings}>
 
 {news ? (news.map((k) => {
@@ -136,7 +136,7 @@ export default function NewsFeeds() {
 
          
           <div >
-          <Card>
+          <Card className="shadow-sm" style={{backgroundColor:'#F2F2F2',border:'none'}} >
   <Card.Body>
     <Card.Title>{k.heading}</Card.Title>
     <Card.Subtitle className="mb-2 text-muted">News</Card.Subtitle>

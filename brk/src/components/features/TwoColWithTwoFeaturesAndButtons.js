@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Row, Col } from "react-bootstrap";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
@@ -9,12 +10,13 @@ import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sig
 import { ReactComponent as PowerIcon } from "feather-icons/dist/icons/power.svg";
 import { ReactComponent as HeartIcon } from "feather-icons/dist/icons/heart.svg";
 
-import Process from "../../images/tech@2x.png"
+import Process from "../../images/process_bkr.png"
 
 
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 
 const Container = tw.div `relative`;
+
 const TwoColumn = tw.div `flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
 const Column = tw.div `w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)
@@ -133,11 +135,21 @@ time of descaling process depends on water usage`,
 
   return (
     <Container>
-      <TwoColumn>
-        <ImageColumn>
-          <Image imageSrc={Process} />
-        </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+ 
+
+  
+ <div>
+
+
+</div>
+      <Container>
+    
+      <Row >
+      <Col sm={8}>
+    
+
+       
+       <div className="p-5" style={{padding:80}}>
           <TextContent>
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
@@ -145,9 +157,25 @@ time of descaling process depends on water usage`,
            
             <Description>{description2}</Description>
             <Description>{description3}</Description>
+          </TextContent>
+            
 
+            
 
-            <Features>
+</div>
+    </Col>
+    <Col sm={4}>
+    <Row>
+    <div style={{marginBottom:165,}}>
+         
+  
+         <img src={Process} className="img-fluid" />
+    
+           </div>
+      </Row>
+    <Row>
+
+    <Features>
               {features.map((feature, index) => (
                 <Feature key={index}>
                   <FeatureIconContainer>{<feature.Icon />}</FeatureIconContainer>
@@ -161,9 +189,16 @@ time of descaling process depends on water usage`,
             <PrimaryButton as="a" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryButton>
-          </TextContent>
-        </TextColumn>
-      </TwoColumn>
+    </Row>
+    </Col>
+    
+  </Row>
+
+      </Container>
+    
+       
+        
+
     </Container>
   );
 };
