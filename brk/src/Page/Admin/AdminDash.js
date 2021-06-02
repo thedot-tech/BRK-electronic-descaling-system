@@ -59,7 +59,9 @@ export default function AdminDash() {
     const [DPhone, setDPhone] = useState('');
     const [DLoc, setDLoc] = useState('');
     const [DEmail, setDEmail] = useState('');
-    const [DAddress, setDAddress] = useState('')
+    const [DAddress, setDAddress] = useState('');
+    const [DLatitude, setDLatitude] = useState('');
+    const [DLongitude, setDLongitude] = useState('');
     // News startes
         const [heading, setheading] = useState('');
         const [news, setnews] = useState('');
@@ -126,11 +128,15 @@ export default function AdminDash() {
         e.preventDefault();
         const uid = shortid.generate();
         firebase.database().ref(`/dealer/${DLoc}/${uid}`).set(
-            {   name:DName,
+            {   
+                
+                name:DName,
                 email:DEmail,
                 phone:DPhone,
                 location:DLoc,
-                address:DAddress
+                address:DAddress,
+                latitude:DLatitude,
+                longitude:DLongitude
 
             }
         ).then(
@@ -174,6 +180,10 @@ export default function AdminDash() {
             setDEmail(event.target.value);
         else if(name === 'daddress')
             setDAddress(event.target.value);
+            else if(name === 'dlat')
+            setDLatitude(event.target.value);
+            else if(name === 'dlong')
+            setDLongitude(event.target.value);
     }
     const addNewsBtn = () => {
         setaddNews(true)
@@ -324,6 +334,17 @@ export default function AdminDash() {
     
   </Form.Group>
 
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Latitude</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DLatitude} onChange={dealerChangeHandler('dlat')}/>
+    
+  </Form.Group>
+  
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Longitude</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DLongitude} onChange={dealerChangeHandler('dlong')}/>
+    
+  </Form.Group>
   <Button variant="primary" type="submit" block onClick={saveDealers}>
     Submit
   </Button>

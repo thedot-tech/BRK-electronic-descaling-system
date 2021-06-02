@@ -8,7 +8,7 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import Testimonial from "components/testimonials/TwoColumnWithImageAndProfilePictureReview.js";
 import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
-import {Form} from 'react-bootstrap'
+import {Form,Card,Button} from 'react-bootstrap'
 import firebase from 'firebase';
 
 const Container = tw.div`relative`;
@@ -91,6 +91,20 @@ export default function Dealer() {
 
    
     }
+
+    const showMapNow = (latitude,longitude) => {
+        console.log( latitude,longitude);
+        var url = "https://maps.google.com/?q=" + latitude + "," + longitude;
+        console.log(url);
+            window.open(url);
+    }
+    const showMap  = (latitude,longitude) => {
+        return(
+    <Button variant="warning" onClick={() => showMapNow(latitude,longitude)}>Open map</Button>
+
+        )
+   
+    }
     return (
         <div>
        <Container>
@@ -146,23 +160,33 @@ export default function Dealer() {
       <div>
                     {dealer ? (dealer.map((D) => {
                         return(
-<h5>
-             
-     {D.email}
-     <br/>
-     {D.name}
-     <br/>
+<div>
+<Card style={{border:'none',backgroundColor:'#FF6263'}}>
+  <Card.Body>
+    <Card.Title className="text-white">Name {D.name}</Card.Title>
+    <Card.Subtitle className="mb-2 text-white">Phone  {D.phone}</Card.Subtitle>
+    <Card.Subtitle className="mb-2 text-white">Email  {D.email}</Card.Subtitle>
 
-     {D.address}
+    <Card.Text className="text-white">
+      Address {D.address}
 
+    </Card.Text>
 
- </h5>
+    {showMap(D.latitude,D.longitude)}
+  </Card.Body>
+</Card>
+<br/>
+</div>
                         )
      
 
                     })
 ):(
-    null
+    <div>
+        <p>
+            There is no Dealers here
+        </p>
+        </div>
 )
                     }
            
