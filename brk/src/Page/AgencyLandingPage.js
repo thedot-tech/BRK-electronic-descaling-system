@@ -27,7 +27,7 @@ export default () => (
     <Hero />
     <News/>
     <VideoSection/>
-    <MainFeature />
+    <MainFeature />  
     <Features />
     <MainFeature2 />
     <Portfolio />
