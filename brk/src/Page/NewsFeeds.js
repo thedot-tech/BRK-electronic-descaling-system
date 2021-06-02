@@ -153,14 +153,6 @@ export default function NewsFeeds() {
   <Carousel.Item interval={1000}>
   <Card style={{backgroundColor:'#3944F7'}}>
   <Card.Body className="text-center text-white">
-    <Card.Title>Make above things are Highlighted in the website bro</Card.Title>
-    
-  </Card.Body>
-</Card>
-  </Carousel.Item>
-  <Carousel.Item interval={1000}>
-  <Card style={{backgroundColor:'#3944F7'}}>
-  <Card.Body className="text-center text-white">
     <Card.Title>Salt Blockages in drip pipe jets are removed automatically.</Card.Title>
     
   </Card.Body>

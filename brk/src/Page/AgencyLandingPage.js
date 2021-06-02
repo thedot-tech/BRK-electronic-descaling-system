@@ -27,7 +27,7 @@ import Client_Two from "../images/client_two@2x.png"
 
 export default () => (
   <AnimationRevealPage>
-    <Hero />
+    <Hero/>
     <News/>
     <VideoSection/>
     <MainFeature />  
