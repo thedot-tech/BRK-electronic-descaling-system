@@ -59,6 +59,7 @@ export default function AdminDash() {
     const [DPhone, setDPhone] = useState('');
     const [DLoc, setDLoc] = useState('');
     const [DEmail, setDEmail] = useState('');
+    const [DAddress, setDAddress] = useState('')
     // News startes
         const [heading, setheading] = useState('');
         const [news, setnews] = useState('');
@@ -129,6 +130,7 @@ export default function AdminDash() {
                 email:DEmail,
                 phone:DPhone,
                 location:DLoc,
+                address:DAddress
 
             }
         ).then(
@@ -170,6 +172,8 @@ export default function AdminDash() {
             setDLoc(event.target.value);
         else if(name === 'demail')
             setDEmail(event.target.value);
+        else if(name === 'daddress')
+            setDAddress(event.target.value);
     }
     const addNewsBtn = () => {
         setaddNews(true)
@@ -265,15 +269,53 @@ export default function AdminDash() {
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Add Location</Form.Label>
     <Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Example select</Form.Label>
+    <Form.Label>Select Districts</Form.Label>
     <Form.Control as="select" onChange={dealerChangeHandler('dloc')}>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <option>Ariyalur</option>
+<option>Chengalpattu</option>
+<option>Chennai</option>
+<option>Coimbatore</option>
+<option>Cuddalore</option>
+<option>Dharmapuri</option>
+<option>Dindigul</option>
+<option>Erode</option>
+<option>Kallakurichi</option>
+<option>Kanchipuram</option>
+<option>Kanyakumari</option>
+<option>Karur</option>
+<option>Krishnagiri</option>
+<option>Madurai</option>
+<option>Nagapattinam</option>
+<option>Namakkal</option>
+<option>Nilgiris</option>
+<option>Perambalur</option>
+<option>Pudukkottai</option>
+<option>Ramanathapuram</option>
+<option>Ranipet</option>
+<option>Salem</option>
+<option>Sivaganga</option>
+<option>Tenkasi</option>
+<option>Thanjavur</option>
+<option>Theni</option>
+<option>Thoothukudi (Tuticorin)</option>
+<option>Tiruchirappalli</option>
+<option>Tirunelveli</option>
+<option>Tirupathur</option>
+<option>Tiruppur</option>
+<option>Tiruvallur</option>
+<option>Tiruvannamalai</option>
+<option>Tiruvarur</option>
+<option>Vellore</option>
+<option>Viluppuram</option>
+<option>Virudhunagar</option>
+
     </Form.Control>
   </Form.Group>
+    
+  </Form.Group>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Dealer's Address</Form.Label>
+    <Form.Control type="text" placeholder="Enter Full address" value={DAddress} onChange={dealerChangeHandler('daddress')}/>
     
   </Form.Group>
   <Form.Group controlId="formBasicEmail">
