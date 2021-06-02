@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import tw from 'twin.macro' //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { Form, Button, Alert, Row, Col, Card } from 'react-bootstrap'
+import { Form, Button, Alert, Row, Col, Card, Carousel } from 'react-bootstrap'
 import moment from "moment";
 import firebase from 'firebase'
 import { connect } from 'react-firebase'
 import Slider from "react-slick";
+
 
 import styled from "styled-components";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
@@ -121,6 +122,62 @@ export default function NewsFeeds() {
 
 
         <Container >
+
+          <div style={{marginTop:32}}>
+
+          <Carousel>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>Easy to install compared to any other product in the market.</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>1yr satisfaction warrenty</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>15yrs and above life time.</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>Make above things are Highlighted in the website bro</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>Salt Blockages in drip pipe jets are removed automatically.</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <Card style={{backgroundColor:'#3944F7'}}>
+  <Card.Body className="text-center text-white">
+    <Card.Title>Specially supporting system for drip irrigation from salt blocking.</Card.Title>
+    
+  </Card.Body>
+</Card>
+  </Carousel.Item>
+  
+  
+</Carousel>
+            </div>
             <br/>
               <Heading tw="text-center mt-5">News and <span tw=" text-green-900">feeds.</span></Heading>
         <div style={{ marginTop:30}}>
