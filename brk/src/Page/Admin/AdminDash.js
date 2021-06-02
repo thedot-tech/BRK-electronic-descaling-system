@@ -125,7 +125,7 @@ export default function AdminDash() {
     const saveDealers = (e) => {
         e.preventDefault();
         const uid = shortid.generate();
-        firebase.database().ref(`/dealer/${uid}`).set(
+        firebase.database().ref(`/dealer/${DLoc}/${uid}`).set(
             {   name:DName,
                 email:DEmail,
                 phone:DPhone,

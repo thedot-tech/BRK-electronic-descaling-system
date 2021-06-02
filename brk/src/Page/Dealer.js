@@ -54,55 +54,39 @@ export default function Dealer() {
 
     const seeDealersData = () => {
         console.log("Dealers -- >",dealer);
-        if(dealer){
-            // return(
-            //     <div>
-            //     <h4>
-            //         {dealer.location}
-            //     </h4>
-            // </div>
-            // )
-            return(
-                <div>
+        console.log("Dealers -- >",dealer.length);
 
-{dealer.map((dele,i) => {
-         
-         <div>
-             <h3>
-                 Here
-                 </h3>
-                 <h4>
-         {dele.email}
-         {i}
-     </h4>
-         </div>
-  
- })}
-                </div>
-          
-            )
 
-           
-        }
+
+            
+
+        // for(var t = 0;t<dealer.length;t++){
+        //     return(
+               
+        //     )
+        // }
     }
     const onSelectLocation = (event) => {
         setselectLoc(event.target.value)
     }
 
     const onSearch = (e) => {
+
+        console.log('Top Temp ',dealer);
+
         e.preventDefault();
         // get all dealers
-        setdealer([])
+        let Temp =[];
         if(selectLoc){
-            var ref = firebase.database().ref(`/dealer`);
-            ref.on("child_added", function(data){
-                if(data.val().location === selectLoc){
-                    let Temp = dealer;
-                    Temp.push(data.val());
-                    setdealer(Temp)
-                    console.log(data.val(), data.key);
-                }
+            var ref = firebase.database().ref(`/dealer/${selectLoc}`).on('value',snapshot => {
+                console.log(snapshot.val())
+                if(snapshot.val() === null)
+                setdealer([])
+                else
+                setdealer(Object.values(snapshot.val()))
+
             })
+        
         }
 
    
@@ -159,7 +143,30 @@ export default function Dealer() {
 </Form.Group>
       </Column>
       <Column>
-      {seeDealersData()}
+      <div>
+                    {dealer ? (dealer.map((D) => {
+                        return(
+<h5>
+             
+     {D.email}
+     <br/>
+     {D.name}
+     <br/>
+
+     {D.address}
+
+
+ </h5>
+                        )
+     
+
+                    })
+):(
+    null
+)
+                    }
+           
+            </div>
       </Column>
       <CardAction onClick={onSearch}>Search</CardAction>
       </ThreeColumnContainer>
