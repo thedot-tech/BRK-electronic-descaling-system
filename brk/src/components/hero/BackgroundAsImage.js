@@ -1,8 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
+import {Row,Col} from 'react-bootstrap'
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 
@@ -58,6 +58,9 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default () => {
+
+  const [insideProducts, setinsideProducts] = useState(false);
+
   const navLinks = [
     <NavLinks key={1}>
       <NavLink href="/about">
@@ -80,6 +83,27 @@ export default () => {
     </NavLinks>
   ];
 
+
+  const showProduct = () => {
+    if(insideProducts){
+      return(
+        <div style={{backgroundColor:'gray',marginTop:32}} className="text-center">
+          <div>
+          <Row>
+      <Col>Agriculture</Col>
+      <Col>Domestic</Col>
+      <Col>Industry</Col>
+    </Row>
+            </div>
+          </div>
+      )
+    }
+  
+  }
+const showProductStatus = () => {
+    const temp = insideProducts; 
+    setinsideProducts(!temp)
+}
   return (
     <Container>
       <OpacityOverlay />
@@ -93,8 +117,7 @@ export default () => {
               <br />
               <SlantedBackground>STRUCTURE WATERDEVICE</SlantedBackground>
             </Heading>
-            <PrimaryAction>Our Product</PrimaryAction>
-            
+            <PrimaryAction onClick={showProductStatus}>Our Product</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
@@ -106,6 +129,8 @@ export default () => {
           </RightColumn>
         </TwoColumn>
       </HeroContainer>
+      {showProduct()}
+
     </Container>
   );
 };

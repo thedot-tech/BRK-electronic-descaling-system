@@ -161,7 +161,7 @@ export default function NewsFeeds() {
   <Carousel.Item interval={1000}>
   <Card style={{backgroundColor:'#3944F7'}}>
   <Card.Body className="text-center text-white">
-    <Card.Title>Specially supporting system for drip irrigation from salt blocking.</Card.Title>
+    <Card.Title>Specially supporting system for micro irrigation from salt blocking.</Card.Title>
     
   </Card.Body>
 </Card>
