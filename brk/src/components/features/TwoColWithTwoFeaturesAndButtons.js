@@ -10,7 +10,7 @@ import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sig
 import { ReactComponent as PowerIcon } from "feather-icons/dist/icons/power.svg";
 import { ReactComponent as HeartIcon } from "feather-icons/dist/icons/heart.svg";
 
-import Process from "../../images/process_bkr.png"
+import Process from "../../images/process_bkrr.png"
 
 
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
