@@ -123,7 +123,13 @@ export default () => {
     <div><img src={PTwo} style={{height:400,width:200}}/></div>
     </AwesomeSlider>
     </MediaQuery>
+    <MediaQuery minWidth={200} maxWidth={400}>
+      <AwesomeSlider style={{width:'500'}}>
 
+    <div><img src={POne} style={{height:400,width:200}}/></div>
+    <div><img src={PTwo} style={{height:400,width:200}}/></div>
+    </AwesomeSlider>
+    </MediaQuery>
       <MediaQuery minWidth={1200}>
       <AwesomeSlider>
 
