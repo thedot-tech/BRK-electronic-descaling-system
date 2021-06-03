@@ -52,7 +52,16 @@ export default function AdminDash() {
 
     const [addNews, setaddNews] = useState(false);
     const [addVideo, setaddVideo] = useState(false);
-    const [seeClient, setseeClients] = useState(false)
+    const [seeClient, setseeClients] = useState(false);
+    const [addDealers, setaddDealers] = useState(false);
+
+    const [DName, setDName] = useState('');
+    const [DPhone, setDPhone] = useState('');
+    const [DLoc, setDLoc] = useState('');
+    const [DEmail, setDEmail] = useState('');
+    const [DAddress, setDAddress] = useState('');
+    const [DLatitude, setDLatitude] = useState('');
+    const [DLongitude, setDLongitude] = useState('');
     // News startes
         const [heading, setheading] = useState('');
         const [news, setnews] = useState('');
@@ -115,6 +124,34 @@ export default function AdminDash() {
         
     
     }
+    const saveDealers = (e) => {
+        e.preventDefault();
+        const uid = shortid.generate();
+        firebase.database().ref(`/dealer/${DLoc}/${uid}`).set(
+            {   
+                
+                name:DName,
+                email:DEmail,
+                phone:DPhone,
+                location:DLoc,
+                address:DAddress,
+                latitude:DLatitude,
+                longitude:DLongitude
+
+            }
+        ).then(
+            console.log("Saved Data"),
+
+            seturl(''),
+            setsuccess(true),
+
+            
+
+         ).catch(err => 
+            console.log(err)
+            
+            )
+    }
     const savedSuccess = () => {
         if(success)
        { return(
@@ -132,16 +169,42 @@ export default function AdminDash() {
         else if(name === 'url')
             seturl(event.target.value);
     }
+    const dealerChangeHandler = (name) => event => {
+        if(name === 'dname')
+            setDName(event.target.value);
+        else if(name === 'dphone')
+            setDPhone(event.target.value);
+        else if(name === 'dloc')
+            setDLoc(event.target.value);
+        else if(name === 'demail')
+            setDEmail(event.target.value);
+        else if(name === 'daddress')
+            setDAddress(event.target.value);
+            else if(name === 'dlat')
+            setDLatitude(event.target.value);
+            else if(name === 'dlong')
+            setDLongitude(event.target.value);
+    }
     const addNewsBtn = () => {
         setaddNews(true)
         setaddVideo(false)
         setseeClients(false)
+        setaddDealers(false)
 
     }
     const addVideoBtn = () => {
         setaddVideo(true)
         setaddNews(false)
         setseeClients(false)
+        setaddDealers(false)
+
+
+    }
+    const addDealersBtn = () => {
+        setaddVideo(false)
+        setaddNews(false)
+        setseeClients(false)
+        setaddDealers(true)
 
 
     }
@@ -149,6 +212,8 @@ export default function AdminDash() {
         setaddVideo(false)
         setaddNews(false)
         setseeClients(true)
+        setaddDealers(false)
+
 
     }
     const addNewsSection = () => {
@@ -195,7 +260,98 @@ export default function AdminDash() {
         )
     }
     }
+    const addDealersSection = () => {
+        if(addDealers){
+            return(
+                <Form>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Name</Form.Label>
+    <Form.Control type="text" placeholder="Enter News Heading" value={DName} onChange={dealerChangeHandler('dname')}/>
+    
+  </Form.Group>
 
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Phone</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DPhone} onChange={dealerChangeHandler('dphone')}/>
+    
+  </Form.Group>
+
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Location</Form.Label>
+    <Form.Group controlId="exampleForm.ControlSelect1">
+    <Form.Label>Select Districts</Form.Label>
+    <Form.Control as="select" onChange={dealerChangeHandler('dloc')}>
+    <option>Ariyalur</option>
+<option>Chengalpattu</option>
+<option>Chennai</option>
+<option>Coimbatore</option>
+<option>Cuddalore</option>
+<option>Dharmapuri</option>
+<option>Dindigul</option>
+<option>Erode</option>
+<option>Kallakurichi</option>
+<option>Kanchipuram</option>
+<option>Kanyakumari</option>
+<option>Karur</option>
+<option>Krishnagiri</option>
+<option>Madurai</option>
+<option>Nagapattinam</option>
+<option>Namakkal</option>
+<option>Nilgiris</option>
+<option>Perambalur</option>
+<option>Pudukkottai</option>
+<option>Ramanathapuram</option>
+<option>Ranipet</option>
+<option>Salem</option>
+<option>Sivaganga</option>
+<option>Tenkasi</option>
+<option>Thanjavur</option>
+<option>Theni</option>
+<option>Thoothukudi (Tuticorin)</option>
+<option>Tiruchirappalli</option>
+<option>Tirunelveli</option>
+<option>Tirupathur</option>
+<option>Tiruppur</option>
+<option>Tiruvallur</option>
+<option>Tiruvannamalai</option>
+<option>Tiruvarur</option>
+<option>Vellore</option>
+<option>Viluppuram</option>
+<option>Virudhunagar</option>
+
+    </Form.Control>
+  </Form.Group>
+    
+  </Form.Group>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Dealer's Address</Form.Label>
+    <Form.Control type="text" placeholder="Enter Full address" value={DAddress} onChange={dealerChangeHandler('daddress')}/>
+    
+  </Form.Group>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Email</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DEmail} onChange={dealerChangeHandler('demail')}/>
+    
+  </Form.Group>
+
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Latitude</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DLatitude} onChange={dealerChangeHandler('dlat')}/>
+    
+  </Form.Group>
+  
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Longitude</Form.Label>
+    <Form.Control type="text" placeholder="Enter News (max 55)" value={DLongitude} onChange={dealerChangeHandler('dlong')}/>
+    
+  </Form.Group>
+  <Button variant="primary" type="submit" block onClick={saveDealers}>
+    Submit
+  </Button>
+</Form>
+            )
+        }
+    }
     const onChangeHandler = (event) => {
         setpassword(event.target.value);
     }
@@ -245,6 +401,11 @@ export default function AdminDash() {
         Add Videos
     </Button>
         </Col>
+        <Col>
+        <Button variant="danger" size="lg" onClick={addDealersBtn}>
+        Add Dealers
+    </Button>
+        </Col>
       </Row>
     </Container>
             );
@@ -266,6 +427,7 @@ export default function AdminDash() {
 {savedSuccess()}
                {addNewsSection()}
                 {addVideoSection()}
+                {addDealersSection()}
                 {datas && seeClient ? (
           console.log(datas),
           datas.map((key) => {

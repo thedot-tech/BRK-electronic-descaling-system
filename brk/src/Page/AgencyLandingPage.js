@@ -3,9 +3,12 @@ import tw from 'twin.macro' //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
+
+
 import Hero from "components/hero/BackgroundAsImage.js";
 import News from "./NewsFeeds"
 import VideoSection from "./VideoSection"
+import Dealer from "./Dealer";
 import Features from "components/features/DashedBorderSixFeatures";
 import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
 import MainFeature2 from "components/features/TwoColWithTwoFeaturesAndButtons.js";
@@ -24,10 +27,10 @@ import Client_Two from "../images/client_two@2x.png"
 
 export default () => (
   <AnimationRevealPage>
-    <Hero />
+    <Hero/>
     <News/>
     <VideoSection/>
-    <MainFeature />
+    <MainFeature />  
     <Features />
     <MainFeature2 />
     <Portfolio />
@@ -63,6 +66,7 @@ export default () => (
       ]}
       textOnLeft={true}
     />
+    <Dealer/>
     <FAQ
       imageSrc={customerSupportIllustrationSrc}
       imageContain={true}

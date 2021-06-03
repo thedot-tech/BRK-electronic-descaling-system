@@ -1,10 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
+import {Row,Col,Alert} from 'react-bootstrap'
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+import { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
+import POne from './pamphlet_one.jpeg'
+import PTwo from './pamphlet_two.jpeg'
+
 
 const StyledHeader = styled(Header)
 `
@@ -58,6 +65,9 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default () => {
+
+  const [insideProducts, setinsideProducts] = useState(false);
+
   const navLinks = [
     <NavLinks key={1}>
       <NavLink href="/about">
@@ -80,6 +90,59 @@ export default () => {
     </NavLinks>
   ];
 
+
+  const showProduct = () => {
+    if(insideProducts){
+      return(
+        <div style={{backgroundColor:'white',alignSelf:'center'}} className="text-center">
+          <div>
+          <Row>
+      <Col>
+      <Alert variant='success'>
+      Agriculture
+  </Alert>
+      </Col>
+      <Col>
+      <Alert variant='warning'>
+      Domestic
+  </Alert>
+      </Col>
+      <Col>
+      <Alert variant='danger'>
+      Industry
+  </Alert>
+      </Col>
+    </Row>
+            </div>
+            <div style={{backgroundColor:'#fff'}}>
+
+            <MediaQuery minWidth={400} maxWidth={1200}>
+      <AwesomeSlider style={{width:'500'}}>
+
+    <div><img src={POne} style={{height:400,width:200}}/></div>
+    <div><img src={PTwo} style={{height:400,width:200}}/></div>
+    </AwesomeSlider>
+    </MediaQuery>
+
+      <MediaQuery minWidth={1200}>
+      <AwesomeSlider>
+
+      <div><img src={POne} /></div>
+    <div><img src={PTwo} /></div>
+  </AwesomeSlider>
+
+    </MediaQuery>
+
+            </div>
+          </div>
+      )
+    }
+  
+  }
+const showProductStatus = () => {
+    const temp = insideProducts; 
+    setinsideProducts(!temp)
+}
   return (
     <Container>
       <OpacityOverlay />
@@ -93,8 +156,7 @@ export default () => {
               <br />
               <SlantedBackground>STRUCTURE WATERDEVICE</SlantedBackground>
             </Heading>
-            <PrimaryAction>Our Product</PrimaryAction>
-            
+            <PrimaryAction onClick={showProductStatus}>Our Product</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
@@ -106,6 +168,8 @@ export default () => {
           </RightColumn>
         </TwoColumn>
       </HeroContainer>
+      {showProduct()}
+
     </Container>
   );
 };

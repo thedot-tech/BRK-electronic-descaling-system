@@ -14,24 +14,27 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 
 import "slick-carousel/slick/slick.css";
 
-const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
-const TestimonialsContainer = tw.div`mt-16 lg:mt-0`;
-const Testimonials = styled.div``;
-const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row`;
+const Container = tw.div `relative`;
+const Content = tw.div `max-w-screen-xl mx-auto py-20 lg:py-24`;
+const TestimonialsContainer = tw.div `mt-16 lg:mt-0`;
+const Testimonials = styled.div ``;
+const Testimonial = tw.div `max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row`;
 
-const TestimonialImageSlider = tw(Slider)`w-full lg:w-5/12 flex-shrink-0 `;
-const TestimonialTextSlider = tw(Slider)``;
-const TestimonialText = tw.div`outline-none`;
+const TestimonialImageSlider = tw(Slider)
+`w-full lg:w-5/12 flex-shrink-0 `;
+const TestimonialTextSlider = tw(Slider)
+``;
+const TestimonialText = tw.div `outline-none`;
 
-const ImageAndControlContainer = tw.div`relative outline-none`;
+const ImageAndControlContainer = tw.div `relative outline-none`;
 const Image = styled.div(props => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-cover bg-center h-80 sm:h-96 lg:h-144`
+    `background-image: url("${props.imageSrc}");`,
+    tw `rounded bg-cover bg-center h-80 sm:h-96 lg:h-144`
 ]);
 
-const ControlContainer = tw.div`absolute bottom-0 right-0 bg-gray-100 px-6 py-4 rounded-tl-3xl border`;
-const ControlButton = styled(PrimaryButton)`
+const ControlContainer = tw.div `absolute bottom-0 right-0 bg-gray-100 px-6 py-4 rounded-tl-3xl border`;
+const ControlButton = styled(PrimaryButton)
+`
   ${tw`mx-3 rounded-full text-gray-100 p-2`}
   svg {
     ${tw`w-5 h-5`}
@@ -99,7 +102,7 @@ export default ({
     }
   ];
 
-  if (!testimonials || testimonials.length === 0) testimonials = defaultTestimonials;
+  if (!testimonials || testimonials.length === 0) testimonials = null;
 
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
@@ -113,7 +116,7 @@ export default ({
           <Testimonials>
             <Testimonial>
               <TestimonialImageSlider arrows={false} ref={setImageSliderRef} asNavFor={textSliderRef} fade={true}>
-                {testimonials.map((testimonial, index) => (
+                {testimonials ?  (testimonials.map((testimonial, index) => (
                   <ImageAndControlContainer key={index}>
                     <Image imageSrc={testimonial.imageSrc} />
                     <ControlContainer>
@@ -125,12 +128,14 @@ export default ({
                       </ControlButton>
                     </ControlContainer>
                   </ImageAndControlContainer>
-                ))}
+                ))) : (
+                  null
+                )}
               </TestimonialImageSlider>
               <TextContainer textOnLeft={textOnLeft}>
                 <HeadingInfo tw="hidden lg:block" subheading={subheading} heading={heading} description={description} />
                 <TestimonialTextSlider arrows={false} ref={setTextSliderRef} asNavFor={imageSliderRef} fade={true}>
-                  {testimonials.map((testimonial, index) => (
+                  {testimonials ?  (testimonials.map((testimonial, index) => (
                     <TestimonialText key={index}>
                       <QuoteContainer>
                         <Quote>
@@ -147,7 +152,9 @@ export default ({
                         </CustomerTextInfo>
                       </CustomerInfo>
                     </TestimonialText>
-                  ))}
+                  ))) : (
+                    null
+                  )}
                 </TestimonialTextSlider>
               </TextContainer>
             </Testimonial>
