@@ -1,8 +1,8 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {Row,Col,Alert} from 'react-bootstrap'
+import { Row, Col, Alert } from 'react-bootstrap'
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 import AwesomeSlider from 'react-awesome-slider';
@@ -119,22 +119,22 @@ export default () => {
             <MediaQuery minWidth={400} maxWidth={1200}>
       <AwesomeSlider style={{width:'500'}}>
 
-    <div><img src={POne} style={{height:400,width:200}}/></div>
-    <div><img src={PTwo} style={{height:400,width:200}}/></div>
+    <div><img src={POne} style={{height:300,width:200}}/></div>
+    <div><img src={PTwo} style={{height:300,width:200}}/></div>
     </AwesomeSlider>
     </MediaQuery>
     <MediaQuery minWidth={200} maxWidth={400}>
       <AwesomeSlider style={{width:'500'}}>
 
-    <div><img src={POne} style={{height:400,width:200}}/></div>
-    <div><img src={PTwo} style={{height:400,width:200}}/></div>
+    <div><img src={POne} style={{height:270,width:200}}/></div>
+    <div><img src={PTwo} style={{height:270,width:200}}/></div>
     </AwesomeSlider>
     </MediaQuery>
       <MediaQuery minWidth={1200}>
       <AwesomeSlider>
 
-      <div><img src={POne} /></div>
-    <div><img src={PTwo} /></div>
+      <div><img src={POne} style={{height:900,width:700}}/></div>
+    <div><img src={PTwo} style={{height:900,width:700}}/></div>
   </AwesomeSlider>
 
     </MediaQuery>
