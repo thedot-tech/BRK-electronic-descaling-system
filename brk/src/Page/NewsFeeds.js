@@ -171,7 +171,7 @@ export default function NewsFeeds() {
 </Carousel>
             </div>
             <br/>
-              <Heading tw="text-center mt-5">News and <span tw=" text-green-900">feeds.</span></Heading>
+              {/* <Heading tw="text-center mt-5">News and <span tw=" text-green-900">feeds.</span></Heading>
         <div style={{ marginTop:30}}>
         
 
@@ -215,7 +215,7 @@ export default function NewsFeeds() {
 </Container>       
 
       </div>
-        
+         */}
         </Container>
     )
 }
