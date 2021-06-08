@@ -11,7 +11,7 @@ import { useMediaQuery } from 'react-responsive'
 import MediaQuery from 'react-responsive'
 import POne from './pamphlet_one.jpeg'
 import PTwo from './pamphlet_two.jpeg'
-
+import { Card } from "react-bootstrap";
 
 const StyledHeader = styled(Header)
 `
@@ -73,7 +73,7 @@ export default () => {
       <NavLink href="/about">
         About
       </NavLink>
-      <NavLink href="#">
+      <NavLink href="/how">
         How it works?
       </NavLink>
       <NavLink href="#">
@@ -98,23 +98,41 @@ export default () => {
           <div>
           <Row>
       <Col>
-      <Alert variant='success'>
-      Agriculture
-  </Alert>
+      <Card.Body variant='success'>
+      <Card.Title>Agriculture</Card.Title>
+  
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link href="#">Read more</Card.Link>
+  </Card.Body>
       </Col>
       <Col>
-      <Alert variant='warning'>
-      Domestic
-  </Alert>
+      <Card.Body variant='warning'>
+          <Card.Title>Domestic</Card.Title>
+      
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link href="#">Read more</Card.Link>
+  </Card.Body>
       </Col>
       <Col>
-      <Alert variant='danger'>
-      Industry
-  </Alert>
+      <Card.Body variant='danger'>
+          <Card.Title>Industry</Card.Title>
+      
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link href="#">Read more</Card.Link>
+  </Card.Body>
       </Col>
     </Row>
             </div>
-            <div style={{backgroundColor:'#fff'}}>
+            {/* <div style={{backgroundColor:'#fff'}}>
 
             <MediaQuery minWidth={400} maxWidth={1200}>
       <AwesomeSlider style={{width:'500'}}>
@@ -139,7 +157,7 @@ export default () => {
 
     </MediaQuery>
 
-            </div>
+            </div> */}
           </div>
       )
     }

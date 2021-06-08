@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import { Container, Form,Button,Alert,Row,Col,Card } from 'react-bootstrap'
-
-
 import firebase from 'firebase'
 import { connect } from 'react-firebase'
 import shortid from 'shortid'
@@ -435,12 +433,34 @@ export default function AdminDash() {
               return ( <div>
                   <Card>
                 <Card.Body>
-                <Card.Text>
-               Email {key.email}
-    </Card.Text>
+                    {key.email ? (
     <Card.Text>
-               Phone {key.phone}
-    </Card.Text>
+    Email {key.email}
+</Card.Text>
+                    ) : (
+                        null
+                    )
+
+                    }
+                       {key.name ? (
+    <Card.Text>
+    Email {key.name}
+</Card.Text>
+                    ) : (
+                        null
+                    )
+
+                    }
+                       {key.phone ? (
+    <Card.Text>
+    Email {key.phone}
+</Card.Text>
+                    ) : (
+                        null
+                    )
+
+                    }
+            
                     </Card.Body>
                     </Card>
                 <br/>

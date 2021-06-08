@@ -12,7 +12,7 @@ import { ReactComponent as HeartIcon } from "feather-icons/dist/icons/heart.svg"
 
 import Process from "../../images/process_bkrr.png"
 
-
+import Tech from "./tech@2x.png"
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 
 const Container = tw.div `relative`;
@@ -25,26 +25,24 @@ const TextColumn = styled(Column)(props => [
     tw `md:w-7/12 mt-16 md:mt-0`,
     props.textOnLeft ? tw `md:mr-12 lg:mr-16 md:order-first` : tw `md:ml-12 lg:ml-16 md:order-last`
 ]);
-
+const Heading = tw(SectionHeading)
+`w-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw `rounded bg-contain bg-no-repeat bg-center h-full`
 ]);
-const TextContent = tw.div `lg:py-8 text-center md:text-left`;
+const TextContent = tw.div `lg:py-8 text-center md:text-center`;
 
 const Subheading = tw(SubheadingBase)
-`text-center md:text-left`;
-const Heading = tw(
-    SectionHeading
-)
-`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+`text-center md:text-center`;
+
 const Description = tw.p `mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-gray-800`;
 
-const Features = tw.div `mt-8 max-w-sm mx-auto md:mx-0`;
-const Feature = tw.div `mt-8 flex items-start flex-col md:flex-row`;
+const Features = tw.div `mt-8 items-center max-w-sm`;
+const Feature = tw.div `mt-8 flex items-center flex-col md:flex-row`;
 
 const FeatureIconContainer = styled.div `
-  ${tw`mx-auto inline-block border border-primary-500 text-center rounded-full p-2 flex-shrink-0`}
+  ${tw`inline-block border border-primary-500 rounded-full p-2 flex-shrink-0`}
   svg {
     ${tw`w-5 h-5 text-primary-500`}
   }
@@ -135,49 +133,30 @@ time of descaling process depends on water usage`,
 
   return (
     <Container>
- 
 
-  
- <div>
-
-
-</div>
       <Container>
     
-      <Row >
-      <Col sm={8}>
+  
     
 
-       
        <div className="p-5" style={{padding:80}}>
           <TextContent>
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
-            <Description>{description}</Description>
-           
-            <Description>{description2}</Description>
-            <Description>{description3}</Description>
+          
           </TextContent>
             
 
             
 
 </div>
-    </Col>
-    <Col sm={4}>
-    <Row>
-    <div style={{marginBottom:165,}}>
-         
-  
-         <img src={Process} className="img-fluid" />
-    
-           </div>
-      </Row>
-    <Row>
 
-    <Features>
+<Container>
+    <div style={{alignSelf:'center',alignContent:'center'}}>
+      <Row>
+        <Col sp={7}>
               {features.map((feature, index) => (
-                <Feature key={index}>
+                <Feature key={index} style={{alignSelf:'center',alignContent:'center',justifyItems:'center'}}>
                   <FeatureIconContainer>{<feature.Icon />}</FeatureIconContainer>
                   <FeatureText>
                     <FeatureHeading>{feature.title}</FeatureHeading>
@@ -185,14 +164,18 @@ time of descaling process depends on water usage`,
                   </FeatureText>
                 </Feature>
               ))}
-            </Features>
+              </Col>
+              <Col>
+              
+            <img src={Tech}/>
+            </Col>
+</Row>
+            </div>
             <PrimaryButton as="a" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryButton>
-    </Row>
-    </Col>
-    
-  </Row>
+            </Container>
+
 
       </Container>
     
