@@ -62,7 +62,7 @@ export default function VideoSection() {
 
       
     const showMapNow = () => {
-      var url = "https://www.youtube.com/watch?v=n7JhRDRK3Gg";
+      var url = "https://youtube.com/channel/UCeaTvDkI12hpM0aCbFRU-bg";
       console.log(url);
           window.open(url);
   }

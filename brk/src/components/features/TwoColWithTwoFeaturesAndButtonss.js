@@ -9,7 +9,8 @@ import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefc
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import { ReactComponent as PowerIcon } from "feather-icons/dist/icons/power.svg";
 import { ReactComponent as HeartIcon } from "feather-icons/dist/icons/heart.svg";
-
+import "./TwoColWithTwoFeaturesAndButtonss.css"
+import Client_Two from "../../images/client_one@2x.png"
 import Process from "../../images/process_bkrr.png"
 
 import Tech from "./tech@2x.png"
@@ -103,29 +104,29 @@ time of descaling process depends on water usage`,
     {
       Icon: BriefcaseIcon,
       title: "No use of Salts or Chemicals",
-      description: "We have the best professional marketing people across the globe just to work with you."
+      description: "We are not using any salt or chemicals, "
     },
     {
       Icon: PowerIcon,
       title: "No Power",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      description: "No power supply need, hightly economic"
     }
     ,
     {
       Icon: MoneyIcon,
       title: "Free from Maintenance",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      description: "Maintenance is free, be carefree"
     }
     ,
     {
       Icon: HeartIcon,
       title: "Life span of 25 + Years (A Fit and Forget Device)",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      description: "25+ years life span"
     },
     {
       Icon: MoneyIcon,
       title: " This is a Nano Technology",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      description: "We promise to offer great technology"
     }
   ];
 
@@ -153,8 +154,8 @@ time of descaling process depends on water usage`,
 
 <Container>
     <div style={{alignSelf:'center',alignContent:'center'}}>
-      <Row>
-        <Col sp={7}>
+      <Row className="rowp">
+        <Col sp={9} style={{ flexBase: 'stretch'}}>
               {features.map((feature, index) => (
                 <Feature key={index} style={{alignSelf:'center',alignContent:'center',justifyItems:'center'}}>
                   <FeatureIconContainer>{<feature.Icon />}</FeatureIconContainer>
@@ -165,11 +166,11 @@ time of descaling process depends on water usage`,
                 </Feature>
               ))}
               </Col>
-              <Col>
-              
-            <img src={Tech}/>
-            </Col>
+             <Col className="thumbnailImg">
+            <img src={Client_Two} className="img-fluid thumbnailImg" style={{height:500}}/>
+             </Col>
 </Row>
+
             </div>
             <PrimaryButton as="a" href={primaryButtonUrl}>
               {primaryButtonText}

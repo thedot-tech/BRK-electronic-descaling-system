@@ -42,22 +42,32 @@ export default () => (
       testimonials={[
         {
           imageSrc:
-          Client_One,
+          null,
           profileImageSrc:
             "",
           quote:
-            "Great Product for Water treatment",
-          customerName: "Kumar",
+            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
+          customerName: "Solara Active Pharma Science Ltd.",
+          customerTitle: "Pharma"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
+          customerName: "Pioneer Gloves Factory",
           customerTitle: "Farmer"
         },
         {
           imageSrc:
-          Client_Two,
+          null,
           profileImageSrc:
             "",
             quote:
-            "Great Product for Water treatment",
-          customerName: "Kumar",
+            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
+          customerName: "UKP Radha Krishnan",
           customerTitle: "Farmer"
         }
       ]}

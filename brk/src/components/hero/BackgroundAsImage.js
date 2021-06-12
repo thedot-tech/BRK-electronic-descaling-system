@@ -63,7 +63,7 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
     ${tw`rounded bg-black shadow-xl`}
   }
 `;
-
+//https://player.vimeo.com/video/562188433?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
 export default () => {
 
   const [insideProducts, setinsideProducts] = useState(false);
@@ -178,14 +178,15 @@ const showProductStatus = () => {
             <Heading>
               <span>BRK SYSTEMS</span>
               <br />
-              <SlantedBackground>STRUCTURE WATERDEVICE</SlantedBackground>
+              <SlantedBackground>STRUCTURE WATER DEVICE</SlantedBackground>
             </Heading>
             <PrimaryAction onClick={showProductStatus}>Our Product</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
             //TODO We need to change the video
-              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=1&responsive=1"
+              // url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=1&responsive=1"
+              url="//player.vimeo.com/video/562188433?title=0?&portrait=0&byline=0&autoplay=1&responsive=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               background="transparent"
               
             />
