@@ -13,6 +13,11 @@ import AgencyPage from "./Page/AgencyLandingPage"
 // Admin Dashboard
 import AdminDash from "Page/Admin/AdminDash";
 
+
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-198166927-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 const Routes = () => {
     return(
 
