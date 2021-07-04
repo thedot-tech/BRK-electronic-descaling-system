@@ -30,6 +30,9 @@ const Routes = () => {
                 <Route path="/why" exact component={Whyus}/>
                 <Route path="/contacts" exact component={Contacts}/>
 
+                <Route path="/agriculture" exact component={Contacts}/>
+
+
 
                 <Route path="/brk/admin" exact component={AdminDash}/>
 

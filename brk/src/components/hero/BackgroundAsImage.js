@@ -12,7 +12,7 @@ import MediaQuery from 'react-responsive'
 import POne from './pamphlet_one.jpeg'
 import PTwo from './pamphlet_two.jpeg'
 import { Card } from "react-bootstrap";
-
+import {Link} from "react-router-dom"
 const StyledHeader = styled(Header)
 `
   ${tw`pt-8 max-w-none`}
@@ -84,7 +84,7 @@ export default () => {
       </NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">
+      <PrimaryLink href="/agriculture">
         Join Us
       </PrimaryLink>
     </NavLinks>
@@ -105,7 +105,9 @@ export default () => {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Card.Link href="#">Read more</Card.Link>
+    <Link to="/agriculture">
+    <Card.Link>Read more</Card.Link>
+    </Link>
   </Card.Body>
       </Col>
       <Col>
