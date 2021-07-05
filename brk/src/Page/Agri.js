@@ -3,7 +3,7 @@
 
 
 
-import React from "react";
+import React,{useState} from "react";
 import defaultCardImage from "../images/shield-icon.svg";
 
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -28,12 +28,28 @@ import customerSupportIllustrationSrc from "images/customer-support-illustration
 import tw from 'twin.macro' //eslint-disable-line
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../components/headers/light";
 import { SectionHeading } from "components/misc/Headings.js";
-
+import {Button} from "react-bootstrap"
 import styled from "styled-components";
 import ResponsiveVideoEmbed from "../helpers/ResponsiveVideoEmbed";
 import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
 import { ReactComponent as SvgDecoratorBlob3 } from "../images/svg-decorator-blob-3.svg";
+import SimpleImageSlider from "react-simple-image-slider";
+
+
+
+import One from "./src/Image3.png"
+import Two from "./src/Image4.png"
+import Three from "./src/Image5.png"
+import Four from "./src/Image6.png"
+import Five from "./src/Image7.png"
+import Six from "./src/Image8.png"
+import Seven from "./src/Image9.png"
+
+
+
+import AgriPDF from "./src/agriculturehome.pdf"
+
 
 const StyledHeader = styled(Header)
 `
@@ -100,18 +116,112 @@ const Agri = () => {
   const cards = [
     {
       imageSrc: ShieldIconImage,
-      title: "Safe Water",
+      title: "Agriculture",
       description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
     },
-    { imageSrc: SupportIconImage, title: "More yield",
+    { imageSrc: SupportIconImage, title: "Domestic",
     description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
   
   },
-    { imageSrc: CustomizeIconImage, title: "Economic" ,
+    { imageSrc: CustomizeIconImage, title: "Industry" ,
     description: "Less Fertilizer Cost-30% De-Scaling of Piping Unclogged Water Jets Less Energy Required to Pump and Irrigate"
   },
   
   ];
+
+
+  const [Agriculture, setAgriculture] = useState(false);
+  const [Domestic, setDomestic] = useState(false);
+  const [Industry, setIndustry] = useState(false);
+
+    const setProduct = (product) => {
+          if(product === 'Agriculture'){
+            setAgriculture(true);
+            setDomestic(false)
+            setIndustry(false)
+          }
+          
+          else if(product === 'Domestic'){
+            setDomestic(true)
+            setIndustry(false)
+            setAgriculture(false);
+
+          }
+          else if(product === 'Industry'){
+            setIndustry(true)
+            setAgriculture(false);
+            setDomestic(false)
+
+          }
+    } 
+
+    const images = [
+      { url: One },
+      { url: Two },
+      { url: Three },
+      { url: Four },
+      { url:  Five},
+      { url: Six },
+      { url: Seven },
+    ];
+
+    const showProduct = (products) => {
+        if(Agriculture){
+          return(
+            
+            <div style={{alignContent:'center'}}>
+              <Heading><span tw="text-green-700">Agriculture</span></Heading>
+              <SimpleImageSlider
+              style={{ margin: '0 auto', marginTop: '50px' }}
+              startIndex={0}
+              navSize={50}
+              showBullets={true}
+              showNavs={true}
+              navMargin={30}
+              width={896}
+              
+              height={504}
+              slideDuration={0.5}
+        images={images}
+      />
+
+            <div style={{
+              margin: '0 auto',
+              alignContent:'center',
+              alignItems:'center'
+            }}>
+              <a style={{
+                alignSelf:'center',
+                marginTop: '50px'
+              }}
+              href={AgriPDF}
+              download
+              >
+              Download Brochure
+
+                </a>
+            </div>
+            </div>
+           
+          )
+        }
+        else if(Domestic){
+          return(
+            <h2>
+              Domestic
+            </h2>
+          )
+        }
+        else if(Industry){
+          return(
+            <h2>
+              Industry
+            </h2>
+          )
+        }
+    }
+
+
     return(
         <AnimationRevealPage>
       <ThreeColumnContainer>
@@ -119,22 +229,21 @@ const Agri = () => {
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
-              <span className="imageContainer">
-                <img src={card.imageSrc || defaultCardImage} alt="" />
-              </span>
+             
               <span className="textContainer">
                 <span className="title">{card.title || "Fully Secure"}</span>
                 <p className="description">
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
                 </p>
               </span>
+              <Button onClick={() => setProduct(card.title)} variant="outline-success">See Now</Button>
             </Card>
           </Column>
         ))}
       </ThreeColumnContainer>
-      <DecoratorBlob />
-        <MainFeature />  
-        <MainFeature2/>
+          <div>
+{showProduct()}
+            </div>
         <div style={{marginTop:45}}>
         <Footer/>
 
