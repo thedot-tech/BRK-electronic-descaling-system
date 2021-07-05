@@ -35,8 +35,8 @@ import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
 import { ReactComponent as SvgDecoratorBlob3 } from "../images/svg-decorator-blob-3.svg";
 import SimpleImageSlider from "react-simple-image-slider";
-
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import One from "./src/Image3.png"
 import Two from "./src/Image4.png"
@@ -45,11 +45,34 @@ import Four from "./src/Image6.png"
 import Five from "./src/Image7.png"
 import Six from "./src/Image8.png"
 import Seven from "./src/Image9.png"
+import Eight from "./src/Image10.png"
+import Nine from "./src/Image11.png"
+import Ten from "./src/Image12.png"
+import Eleven from "./src/Image13.png"
+import Twelve from "./src/Image14.png"
+import Thirteen from "./src/Image15.png"
+import Fourteen from "./src/Image16.png"
+import Fifteen from "./src/Image17.png"
+import Sixteen from "./src/Image18.png"
+
+
+
+
+import DOne from "./src/Dimg1.png"
+import DTwo from "./src/Dimg2.png"
+import DThree from "./src/Dimg3.png"
+import DFour from "./src/Dimg4.png"
+import DFive from "./src/Dimg5.png"
+
 
 
 
 import AgriPDF from "./src/agriculturehome.pdf"
+import DomesticPDF from "./src/domestic.pdf"
 
+
+
+import TwoColumnWithFeaturesAndTestimonial from "components/hero/TwoColumnWithFeaturesAndTestimonial";
 
 const StyledHeader = styled(Header)
 `
@@ -165,25 +188,73 @@ const Agri = () => {
       { url: Seven },
     ];
 
+    
+    const Dimages = [
+      { url: DOne },
+      { url: DTwo },
+      { url: DThree },
+      { url: DFour },
+      { url:  DFive},
+    ];
+
+
     const showProduct = (products) => {
         if(Agriculture){
           return(
             
             <div style={{alignContent:'center'}}>
               <Heading><span tw="text-green-700">Agriculture</span></Heading>
-              <SimpleImageSlider
-              style={{ margin: '0 auto', marginTop: '50px' }}
-              startIndex={0}
-              navSize={50}
-              showBullets={true}
-              showNavs={true}
-              navMargin={30}
-              width={896}
               
-              height={504}
-              slideDuration={0.5}
-        images={images}
-      />
+              <Carousel>
+                <div>
+                    <img src={One} />
+                </div>
+                <div>
+                    <img src={Two} />
+                </div>
+                <div>
+                    <img src={Three} />
+                </div>
+                <div>
+                    <img src={Four} />
+                </div>
+                <div>
+                    <img src={Five} />
+                </div>
+                <div>
+                    <img src={Six} />
+                </div>
+                <div>
+                    <img src={Seven} />
+                </div>
+                <div>
+                    <img src={Eight} />
+                </div>
+                <div>
+                    <img src={Nine} />
+                </div>
+                <div>
+                    <img src={Ten} />
+                </div>
+                <div>
+                    <img src={Eleven} />
+                </div>
+                <div>
+                    <img src={Twelve} />
+                </div>
+                <div>
+                    <img src={Thirteen} />
+                </div>
+                <div>
+                    <img src={Fourteen} />
+                </div>
+                <div>
+                    <img src={Fifteen} />
+                </div>
+                <div>
+                    <img src={Sixteen} />
+                </div>
+            </Carousel>
 
             <div style={{
               margin: '0 auto',
@@ -201,15 +272,143 @@ const Agri = () => {
 
                 </a>
             </div>
+
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
+            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
+          customerName: "Solara Active Pharma Science Ltd.",
+          customerTitle: "Pharma"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
+          customerName: "Pioneer Gloves Factory",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
+          customerName: "UKP Radha Krishnan",
+          customerTitle: "Farmer"
+        }
+      ]}
+      textOnLeft={true}
+    />
             </div>
            
           )
         }
         else if(Domestic){
           return(
-            <h2>
-              Domestic
-            </h2>
+            
+            <div style={{alignContent:'center'}}>
+              <Heading><span tw="text-green-700">Domestic</span></Heading>
+              
+       
+              <Carousel>
+                <div>
+                    <img src={DOne} />
+                </div>
+                <div>
+                    <img src={DTwo} />
+                </div>
+                <div>
+                    <img src={DThree} />
+                </div>
+                <div>
+                    <img src={DFour} />
+                </div>
+                <div>
+                    <img src={DFive} />
+                </div>
+            </Carousel>
+             
+
+
+              
+
+            <div style={{
+              margin: '0 auto',
+              alignContent:'center',
+              alignItems:'center'
+            }}>
+              <a style={{
+                alignSelf:'center',
+                marginTop: '50px'
+              }}
+              href={DomesticPDF}
+              download
+              >
+              Download Brochure
+
+                </a>
+            </div>
+
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
+            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
+          customerName: "Solara Active Pharma Science Ltd.",
+          customerTitle: "Pharma"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
+          customerName: "Pioneer Gloves Factory",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
+          customerName: "UKP Radha Krishnan",
+          customerTitle: "Farmer"
+        }
+      ]}
+      textOnLeft={true}
+    />
+            </div>
+           
           )
         }
         else if(Industry){
