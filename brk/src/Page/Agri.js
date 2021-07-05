@@ -46,9 +46,20 @@ import Five from "./src/Image7.png"
 import Six from "./src/Image8.png"
 import Seven from "./src/Image9.png"
 
+import DOne from "./src/Dimg1.png"
+import DTwo from "./src/Dimg2.png"
+import DThree from "./src/Dimg3.png"
+import DFour from "./src/Dimg4.png"
+import DFive from "./src/Dimg5.png"
+
+
 
 
 import AgriPDF from "./src/agriculturehome.pdf"
+import DomesticPDF from "./src/domestic.pdf"
+
+
+
 import TwoColumnWithFeaturesAndTestimonial from "components/hero/TwoColumnWithFeaturesAndTestimonial";
 
 const StyledHeader = styled(Header)
@@ -165,6 +176,16 @@ const Agri = () => {
       { url: Seven },
     ];
 
+    
+    const Dimages = [
+      { url: DOne },
+      { url: DTwo },
+      { url: DThree },
+      { url: DFour },
+      { url:  DFive},
+    ];
+
+
     const showProduct = (products) => {
         if(Agriculture){
           return(
@@ -178,9 +199,9 @@ const Agri = () => {
               showBullets={true}
               showNavs={true}
               navMargin={30}
-              width={896}
+              width={1200}
               
-              height={504}
+              height={800}
               slideDuration={0.5}
         images={images}
       />
@@ -260,11 +281,11 @@ const Agri = () => {
               showBullets={true}
               showNavs={true}
               navMargin={30}
-              width={896}
+              width={1200}
               
-              height={504}
+              height={800}
               slideDuration={0.5}
-        images={images}
+        images={Dimages}
       />
 
             <div style={{
@@ -276,7 +297,7 @@ const Agri = () => {
                 alignSelf:'center',
                 marginTop: '50px'
               }}
-              href={AgriPDF}
+              href={DomesticPDF}
               download
               >
               Download Brochure
