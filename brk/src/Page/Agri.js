@@ -45,6 +45,18 @@ import Four from "./src/Image6.png"
 import Five from "./src/Image7.png"
 import Six from "./src/Image8.png"
 import Seven from "./src/Image9.png"
+import Eight from "./src/Image10.png"
+import Nine from "./src/Image11.png"
+import Ten from "./src/Image12.png"
+import Eleven from "./src/Image13.png"
+import Twelve from "./src/Image14.png"
+import Thirteen from "./src/Image15.png"
+import Fourteen from "./src/Image16.png"
+import Fifteen from "./src/Image17.png"
+import Sixteen from "./src/Image18.png"
+
+
+
 
 import DOne from "./src/Dimg1.png"
 import DTwo from "./src/Dimg2.png"
@@ -192,19 +204,57 @@ const Agri = () => {
             
             <div style={{alignContent:'center'}}>
               <Heading><span tw="text-green-700">Agriculture</span></Heading>
-              <SimpleImageSlider
-              style={{ margin: '0 auto', marginTop: '50px' }}
-              startIndex={0}
-              navSize={50}
-              showBullets={true}
-              showNavs={true}
-              navMargin={30}
-              width={1200}
               
-              height={800}
-              slideDuration={0.5}
-        images={images}
-      />
+              <Carousel>
+                <div>
+                    <img src={One} />
+                </div>
+                <div>
+                    <img src={Two} />
+                </div>
+                <div>
+                    <img src={Three} />
+                </div>
+                <div>
+                    <img src={Four} />
+                </div>
+                <div>
+                    <img src={Five} />
+                </div>
+                <div>
+                    <img src={Six} />
+                </div>
+                <div>
+                    <img src={Seven} />
+                </div>
+                <div>
+                    <img src={Eight} />
+                </div>
+                <div>
+                    <img src={Nine} />
+                </div>
+                <div>
+                    <img src={Ten} />
+                </div>
+                <div>
+                    <img src={Eleven} />
+                </div>
+                <div>
+                    <img src={Twelve} />
+                </div>
+                <div>
+                    <img src={Thirteen} />
+                </div>
+                <div>
+                    <img src={Fourteen} />
+                </div>
+                <div>
+                    <img src={Fifteen} />
+                </div>
+                <div>
+                    <img src={Sixteen} />
+                </div>
+            </Carousel>
 
             <div style={{
               margin: '0 auto',
@@ -286,22 +336,15 @@ const Agri = () => {
                 <div>
                     <img src={DThree} />
                 </div>
+                <div>
+                    <img src={DFour} />
+                </div>
+                <div>
+                    <img src={DFive} />
+                </div>
             </Carousel>
              
 
-<SimpleImageSlider
-style={{ margin: '0 auto', marginTop: '50px' }}
-startIndex={0}
-navSize={50}
-showBullets={true}
-showNavs={true}
-navMargin={30}
-width={1200}
-
-height={800}
-slideDuration={0.5}
-images={Dimages}
-/>
 
               
 
