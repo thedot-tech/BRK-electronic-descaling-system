@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Contact from "../components/forms/TwoColContactUsWithIllustration"
 import { Container, Form,Button,Alert,Row,Col } from 'react-bootstrap'
+import Dealer from "./Dealer";
 
 
 import firebase from 'firebase'
@@ -36,6 +37,7 @@ export default function Contacts() {
 
 
     const [email, setemail] = useState('');
+    const [name, setname] = useState('');
     const [phone, setphone] = useState('');
     const [redirects, setredirect] = useState(false)
 
@@ -47,6 +49,9 @@ export default function Contacts() {
             case 'phone':
                 setphone(event.target.value)
             break;
+            case 'name':
+              setname(event.target.value)
+          break;
         }
     }
 
@@ -69,6 +74,7 @@ export default function Contacts() {
         if(phone && email){
             firebase.database().ref(`contacts/${Uid}`).set({
                 phone,
+                name,
                 email,
                 userid:Uid,
                 date:Date.now()
@@ -76,6 +82,7 @@ export default function Contacts() {
                 setsuccess(true),
                 setemail(''),
                 setphone(''),
+                setname(''),
                 setredirect(true)
 
             ).catch(err => 
@@ -100,6 +107,11 @@ export default function Contacts() {
     </Form.Text>
   </Form.Group>
   <Form.Group>
+    <Form.Label>Your Name</Form.Label>
+    <Form.Control type="text" placeholder="Enter your name" value={name} onChange={useHandler('name')}/>
+
+  </Form.Group>
+  <Form.Group>
     <Form.Label>Phone number</Form.Label>
     <Form.Control type="number" placeholder="Enter your phone" value={phone} onChange={useHandler('phone')}/>
     <Form.Text className="text-muted">
@@ -111,6 +123,10 @@ export default function Contacts() {
     Submit
   </Button>
 </Form>
+<Container>
+<Dealer/>
+
+  </Container>
           </Container>
         </div>
     )

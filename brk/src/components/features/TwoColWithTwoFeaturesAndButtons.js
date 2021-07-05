@@ -91,7 +91,7 @@ installation of DESCALER device in older water systems with scale deposits, the 
 the tap may temporarily contain even higher amount of calcium than untreated water. The 
 time of descaling process depends on water usage`,
   primaryButtonText = "Working",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/",
   features = null,
   textOnLeft = true
 }) => {

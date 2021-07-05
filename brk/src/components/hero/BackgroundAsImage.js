@@ -11,8 +11,8 @@ import { useMediaQuery } from 'react-responsive'
 import MediaQuery from 'react-responsive'
 import POne from './pamphlet_one.jpeg'
 import PTwo from './pamphlet_two.jpeg'
-
-
+import { Card } from "react-bootstrap";
+import {Link} from "react-router-dom"
 const StyledHeader = styled(Header)
 `
   ${tw`pt-8 max-w-none`}
@@ -63,7 +63,7 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
     ${tw`rounded bg-black shadow-xl`}
   }
 `;
-
+//https://player.vimeo.com/video/562188433?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
 export default () => {
 
   const [insideProducts, setinsideProducts] = useState(false);
@@ -73,7 +73,7 @@ export default () => {
       <NavLink href="/about">
         About
       </NavLink>
-      <NavLink href="#">
+      <NavLink href="/how">
         How it works?
       </NavLink>
       <NavLink href="#">
@@ -84,7 +84,7 @@ export default () => {
       </NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">
+      <PrimaryLink href="/agriculture">
         Join Us
       </PrimaryLink>
     </NavLinks>
@@ -98,23 +98,41 @@ export default () => {
           <div>
           <Row>
       <Col>
-      <Alert variant='success'>
-      Agriculture
-  </Alert>
+      <Card.Body variant='success'>
+      <Card.Title>Agriculture</Card.Title>
+  
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link onClick={() => {}}>Read more</Card.Link>
+  </Card.Body>
+      </Col>  
+      <Col>
+      <Card.Body variant='warning'>
+          <Card.Title>Domestic</Card.Title>
+      
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link href="#">Read more</Card.Link>
+  </Card.Body>
       </Col>
       <Col>
-      <Alert variant='warning'>
-      Domestic
-  </Alert>
-      </Col>
-      <Col>
-      <Alert variant='danger'>
-      Industry
-  </Alert>
+      <Card.Body variant='danger'>
+          <Card.Title>Industry</Card.Title>
+      
+      <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Card.Link href="#">Read more</Card.Link>
+  </Card.Body>
       </Col>
     </Row>
             </div>
-            <div style={{backgroundColor:'#fff'}}>
+            {/* <div style={{backgroundColor:'#fff'}}>
 
             <MediaQuery minWidth={400} maxWidth={1200}>
       <AwesomeSlider style={{width:'500'}}>
@@ -139,7 +157,7 @@ export default () => {
 
     </MediaQuery>
 
-            </div>
+            </div> */}
           </div>
       )
     }
@@ -160,14 +178,17 @@ const showProductStatus = () => {
             <Heading>
               <span>BRK SYSTEMS</span>
               <br />
-              <SlantedBackground>STRUCTURE WATERDEVICE</SlantedBackground>
+              <SlantedBackground>STRUCTURE WATER DEVICE</SlantedBackground>
             </Heading>
-            <PrimaryAction onClick={showProductStatus}>Our Product</PrimaryAction>
+            <Link to="/agriculture">
+            <PrimaryAction>Our Product</PrimaryAction>
+            </Link>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
             //TODO We need to change the video
-              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=1&responsive=1"
+              // url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=1&responsive=1"
+              url="//player.vimeo.com/video/562188433?title=0?&portrait=0&byline=0&autoplay=1&responsive=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               background="transparent"
               
             />

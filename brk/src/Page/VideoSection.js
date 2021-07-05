@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from 'react-player'
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 import { Form, Button, Alert, Row, Col, Card, Container,Carousel } from 'react-bootstrap'
 import firebase from 'firebase'
 // import '~video-react/dist/video-react.css';
 import { Player } from 'video-react';
 import { connect } from 'react-firebase'
+
+import Youtube from "./src/youtube@2x.png"
+
 const firebaseConfig = {
     apiKey: "AIzaSyCApad_Ykkvn5_df5lT2RD8CAlKmKhAoEw",
     authDomain: "brk-systems.firebaseapp.com",
@@ -55,12 +59,28 @@ export default function VideoSection() {
           }
         )
       }
-    return (
-        <Container style={{marginTop:20}}>
-            <Container>
-            
 
-            <Carousel style={{justifyContent:"center",alignSelf:'center'}}>
+      
+    const showMapNow = () => {
+      var url = "https://youtube.com/channel/UCeaTvDkI12hpM0aCbFRU-bg";
+      console.log(url);
+          window.open(url);
+  }
+    return (
+        <Container style={{marginTop:20,marginBottom:50}}>
+            <Container>
+              
+            <div className="text-center" onClick={() => showMapNow()}>
+            <p>
+            Our Youtube Channel
+              </p>
+              <div to="https://www.youtube.com/watch?v=TgegjLUzEHg">
+
+                <img src={Youtube} height={50} />
+              </div>
+              </div>
+
+            <Carousel style={{justifyContent:"center",alignSelf:'center',marginTop:55}}>
         {videos ? (videos.map((k) => {
       return(
 
@@ -72,7 +92,7 @@ export default function VideoSection() {
   
 
 
-<ReactPlayer url={k.url} muted={false} className="d-block w-100"/>
+<ReactPlayer url={k.url} muted={true} className="d-block w-100"/>
 
 
   </Carousel.Item>

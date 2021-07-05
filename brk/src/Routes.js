@@ -12,6 +12,11 @@ import Contacts from "./Page/Contacts"
 import AgencyPage from "./Page/AgencyLandingPage"
 // Admin Dashboard
 import AdminDash from "Page/Admin/AdminDash";
+import Agri from "./Page/Agri"
+
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-198166927-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Routes = () => {
     return(
@@ -24,6 +29,9 @@ const Routes = () => {
                 <Route path="/how" exact component={Howitworks}/>
                 <Route path="/why" exact component={Whyus}/>
                 <Route path="/contacts" exact component={Contacts}/>
+
+                <Route path="/agriculture" exact component={Agri}/>
+
 
 
                 <Route path="/brk/admin" exact component={AdminDash}/>
