@@ -288,9 +288,9 @@ const Agri = () => {
           profileImageSrc:
             "",
           quote:
-            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
-          customerName: "Solara Active Pharma Science Ltd.",
-          customerTitle: "Pharma"
+            "Reduces irrigation time in half and increasing water spreading is in Soil, elongation between the branch get increased.",
+          customerName: "Banana",
+          customerTitle: "Agriculture"
         },
         {
           imageSrc:
@@ -298,8 +298,8 @@ const Agri = () => {
           profileImageSrc:
             "",
             quote:
-            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
-          customerName: "Pioneer Gloves Factory",
+            "Leaf burning due to saltwater are disappeared it increases soil softness, greenish to spinach leaf, weight, and volume to get raised.",
+          customerName: "Spinach ",
           customerTitle: "Farmer"
         },
         {
@@ -308,8 +308,18 @@ const Agri = () => {
           profileImageSrc:
             "",
             quote:
-            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
-          customerName: "UKP Radha Krishnan",
+            "Yield gets multiplied without any fertilizers, Besides increases the bright color and weight of the flower.",
+          customerName: "Jasmin Usilampatti",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Even the water more salinity structure water devices remove and reduce salt deposition on drip laterals, pipelines, filter, and soil, it increases our yields with uniformity, Glossyness in lemon.",
+          customerName: "Lemon - Platosen samarasam",
           customerTitle: "Farmer"
         }
       ]}
