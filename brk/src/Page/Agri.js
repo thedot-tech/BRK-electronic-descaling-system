@@ -390,6 +390,88 @@ const Agri = () => {
           profileImageSrc:
             "",
           quote:
+            "Scaling in the bathroom tiles, pipes and buckets are removed without using any acid and chemicals, and heavy brushing, salt precipitation on vessels are removed automatically after washing.",
+          customerName: "Khadhija Electrics",
+          customerTitle: "Electrics"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK Systems structure water devices, Foams come freely which washing and Bathing itchiness and hair fizziness after bathing in saltwater are reduced.",
+          customerName: "Kalingapatti",
+          customerTitle: "Domestic"
+        },
+        
+      ]}
+      textOnLeft={true}
+    />
+            </div>
+           
+          )
+        }
+        else if(Industry){
+          return(
+            <div style={{alignContent:'center'}}>
+              <Heading><span tw="text-green-700">Industry</span></Heading>
+              
+       
+              <Carousel>
+                <div>
+                    <img src={DOne} />
+                </div>
+                <div>
+                    <img src={DTwo} />
+                </div>
+                <div>
+                    <img src={DThree} />
+                </div>
+                <div>
+                    <img src={DFour} />
+                </div>
+                <div>
+                    <img src={DFive} />
+                </div>
+            </Carousel>
+             
+
+
+              
+
+            <div style={{
+              margin: '0 auto',
+              alignContent:'center',
+              alignItems:'center'
+            }}>
+              <a style={{
+                alignSelf:'center',
+                marginTop: '50px'
+              }}
+              href={DomesticPDF}
+              download
+              >
+              Download Brochure
+
+                </a>
+            </div>
+
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
             "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
           customerName: "Solara Active Pharma Science Ltd.",
           customerTitle: "Pharma"
@@ -414,18 +496,11 @@ const Agri = () => {
           customerName: "UKP Radha Krishnan",
           customerTitle: "Farmer"
         }
+        
       ]}
       textOnLeft={true}
     />
             </div>
-           
-          )
-        }
-        else if(Industry){
-          return(
-            <h2>
-              Industry
-            </h2>
           )
         }
     }
@@ -434,7 +509,7 @@ const Agri = () => {
     return(
         <AnimationRevealPage>
       <ThreeColumnContainer>
-      <Heading>Why choose <span tw="text-green-700">our product?</span></Heading>
+      <Heading>Our<span tw="text-green-700"> products</span></Heading>
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
