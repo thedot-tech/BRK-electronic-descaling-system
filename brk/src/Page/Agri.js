@@ -35,8 +35,8 @@ import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
 import { ReactComponent as SvgDecoratorBlob3 } from "../images/svg-decorator-blob-3.svg";
 import SimpleImageSlider from "react-simple-image-slider";
-
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import One from "./src/Image3.png"
 import Two from "./src/Image4.png"
@@ -274,19 +274,36 @@ const Agri = () => {
             
             <div style={{alignContent:'center'}}>
               <Heading><span tw="text-green-700">Domestic</span></Heading>
-              <SimpleImageSlider
-              style={{ margin: '0 auto', marginTop: '50px' }}
-              startIndex={0}
-              navSize={50}
-              showBullets={true}
-              showNavs={true}
-              navMargin={30}
-              width={1200}
               
-              height={800}
-              slideDuration={0.5}
-        images={Dimages}
-      />
+       
+              <Carousel>
+                <div>
+                    <img src={DOne} />
+                </div>
+                <div>
+                    <img src={DTwo} />
+                </div>
+                <div>
+                    <img src={DThree} />
+                </div>
+            </Carousel>
+             
+
+<SimpleImageSlider
+style={{ margin: '0 auto', marginTop: '50px' }}
+startIndex={0}
+navSize={50}
+showBullets={true}
+showNavs={true}
+navMargin={30}
+width={1200}
+
+height={800}
+slideDuration={0.5}
+images={Dimages}
+/>
+
+              
 
             <div style={{
               margin: '0 auto',
