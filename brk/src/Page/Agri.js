@@ -4,12 +4,17 @@
 
 
 import React from "react";
+import defaultCardImage from "../images/shield-icon.svg";
+
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImage.js";
 import News from "./NewsFeeds"
 import VideoSection from "./VideoSection"
 import Dealer from "./Dealer";
+import SupportIconImage from "../images/fast-icon.svg";
+import ShieldIconImage from "../images/shield-icon.svg";
+import CustomizeIconImage from "../images/customize-icon.svg";
 import Features from "components/features/DashedBorderSixFeatures";
 import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
 import MainFeature2 from "components/features/TwoColWithTwoFeaturesAndButtonss.js";
@@ -22,11 +27,13 @@ import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
 import tw from 'twin.macro' //eslint-disable-line
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../components/headers/light";
+import { SectionHeading } from "components/misc/Headings.js";
 
 import styled from "styled-components";
 import ResponsiveVideoEmbed from "../helpers/ResponsiveVideoEmbed";
 import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
+import { ReactComponent as SvgDecoratorBlob3 } from "../images/svg-decorator-blob-3.svg";
 
 const StyledHeader = styled(Header)
 `
@@ -51,38 +58,81 @@ const TwoColumn = tw.div`pt-24 pb-32 px-4 flex justify-between items-center flex
 const LeftColumn = tw.div`flex flex-col items-center lg:block`;
 const RightColumn = tw.div`w-full sm:w-5/6 lg:w-1/2 mt-16 lg:mt-0 lg:pl-8`;
 
-const Heading = styled.h1`
-  ${tw`text-3xl text-center lg:text-left sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-100 leading-none`}
-  span {
-    ${tw`inline-block mt-2`}
+
+
+const ThreeColumnContainer = styled.div `
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24`}
+`;
+const Heading = tw(SectionHeading)`w-full`;
+
+const Column = styled.div`
+  ${tw`md:w-1/2 lg:w-1/3 px-6 flex`}
+`;
+
+const Card = styled.div`
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-green-800 rounded-lg mt-12`}
+  .imageContainer {
+    ${tw`border-2 border-green-800 text-center rounded-full p-6 flex-shrink-0 relative`}
+    img {
+      ${tw`w-8 h-8`}
+    }
+  }
+
+  .textContainer {
+    ${tw`mt-6 text-center`}
+  }
+
+  .title {
+    ${tw`mt-2 font-bold text-xl leading-none text-green-700`}
+  }
+
+  .description {
+    ${tw`mt-3 font-semibold text-secondary-100 text-sm leading-loose`}
   }
 `;
 
-const SlantedBackground = styled.span`
-  ${tw`relative text-green-700 px-4 -mx-4 py-2`}
-  &::before {
-    content: "";
-    ${tw`absolute inset-0 bg-gray-100 transform -skew-x-12 -z-10`}
-  }
+const DecoratorBlob = styled(SvgDecoratorBlob3)`
+  ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
-
-const Notification = tw.span`inline-block my-4 pl-3 py-1 text-gray-200 border-l-4 border-blue-500 font-medium text-sm`;
-
-const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100 focus:shadow-outline`;
-
-const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
-  padding-bottom: 56.25% !important;
-  padding-top: 0px !important;
-  ${tw`rounded`}
-  iframe {
-    ${tw`rounded bg-black shadow-xl`}
-  }
-`;
-
 
 const Agri = () => {
+
+  const cards = [
+    {
+      imageSrc: ShieldIconImage,
+      title: "Safe Water",
+      description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
+    },
+    { imageSrc: SupportIconImage, title: "More yield",
+    description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
+  
+  },
+    { imageSrc: CustomizeIconImage, title: "Economic" ,
+    description: "Less Fertilizer Cost-30% De-Scaling of Piping Unclogged Water Jets Less Energy Required to Pump and Irrigate"
+  },
+  
+  ];
     return(
         <AnimationRevealPage>
+      <ThreeColumnContainer>
+      <Heading>Why choose <span tw="text-green-700">our product?</span></Heading>
+        {cards.map((card, i) => (
+          <Column key={i}>
+            <Card>
+              <span className="imageContainer">
+                <img src={card.imageSrc || defaultCardImage} alt="" />
+              </span>
+              <span className="textContainer">
+                <span className="title">{card.title || "Fully Secure"}</span>
+                <p className="description">
+                  {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
+                </p>
+              </span>
+            </Card>
+          </Column>
+        ))}
+      </ThreeColumnContainer>
+      <DecoratorBlob />
         <MainFeature />  
         <MainFeature2/>
         <div style={{marginTop:45}}>
