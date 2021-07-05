@@ -49,7 +49,7 @@ import Seven from "./src/Image9.png"
 
 
 import AgriPDF from "./src/agriculturehome.pdf"
-
+import TwoColumnWithFeaturesAndTestimonial from "components/hero/TwoColumnWithFeaturesAndTestimonial";
 
 const StyledHeader = styled(Header)
 `
@@ -201,15 +201,133 @@ const Agri = () => {
 
                 </a>
             </div>
+
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
+            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
+          customerName: "Solara Active Pharma Science Ltd.",
+          customerTitle: "Pharma"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
+          customerName: "Pioneer Gloves Factory",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
+          customerName: "UKP Radha Krishnan",
+          customerTitle: "Farmer"
+        }
+      ]}
+      textOnLeft={true}
+    />
             </div>
            
           )
         }
         else if(Domestic){
           return(
-            <h2>
-              Domestic
-            </h2>
+            
+            <div style={{alignContent:'center'}}>
+              <Heading><span tw="text-green-700">Domestic</span></Heading>
+              <SimpleImageSlider
+              style={{ margin: '0 auto', marginTop: '50px' }}
+              startIndex={0}
+              navSize={50}
+              showBullets={true}
+              showNavs={true}
+              navMargin={30}
+              width={896}
+              
+              height={504}
+              slideDuration={0.5}
+        images={images}
+      />
+
+            <div style={{
+              margin: '0 auto',
+              alignContent:'center',
+              alignItems:'center'
+            }}>
+              <a style={{
+                alignSelf:'center',
+                marginTop: '50px'
+              }}
+              href={AgriPDF}
+              download
+              >
+              Download Brochure
+
+                </a>
+            </div>
+
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
+            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
+          customerName: "Solara Active Pharma Science Ltd.",
+          customerTitle: "Pharma"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
+          customerName: "Pioneer Gloves Factory",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
+          customerName: "UKP Radha Krishnan",
+          customerTitle: "Farmer"
+        }
+      ]}
+      textOnLeft={true}
+    />
+            </div>
+           
           )
         }
         else if(Industry){
