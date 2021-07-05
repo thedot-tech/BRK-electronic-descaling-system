@@ -12,7 +12,7 @@ import Contacts from "./Page/Contacts"
 import AgencyPage from "./Page/AgencyLandingPage"
 // Admin Dashboard
 import AdminDash from "Page/Admin/AdminDash";
-
+import Agri from "./Page/Agri"
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-198166927-1');
@@ -30,7 +30,7 @@ const Routes = () => {
                 <Route path="/why" exact component={Whyus}/>
                 <Route path="/contacts" exact component={Contacts}/>
 
-                <Route path="/agriculture" exact component={Contacts}/>
+                <Route path="/agriculture" exact component={Agri}/>
 
 
 

@@ -105,11 +105,9 @@ export default () => {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Link to="/agriculture">
-    <Card.Link>Read more</Card.Link>
-    </Link>
+    <Card.Link onClick={() => {}}>Read more</Card.Link>
   </Card.Body>
-      </Col>
+      </Col>  
       <Col>
       <Card.Body variant='warning'>
           <Card.Title>Domestic</Card.Title>
@@ -182,7 +180,9 @@ const showProductStatus = () => {
               <br />
               <SlantedBackground>STRUCTURE WATER DEVICE</SlantedBackground>
             </Heading>
-            <PrimaryAction onClick={showProductStatus}>Our Product</PrimaryAction>
+            <Link to="/agriculture">
+            <PrimaryAction>Our Product</PrimaryAction>
+            </Link>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
