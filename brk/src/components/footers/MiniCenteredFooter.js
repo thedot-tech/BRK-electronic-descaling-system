@@ -47,13 +47,13 @@ export default () => {
             <Link href="#">Reviews</Link>
           </LinksContainer>
           <SocialLinksContainer>
-            <SocialLink href="https://facebook.com">
+            <SocialLink href="https://www.facebook.com/BRKsystemsWaterTreatment">
               <FacebookIcon />
             </SocialLink>
             <SocialLink href="https://twitter.com">
               <TwitterIcon />
             </SocialLink>
-            <SocialLink href="https://youtube.com">
+            <SocialLink href="https://www.youtube.com/channel/UCeaTvDkI12hpM0aCbFRU-bg">
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
