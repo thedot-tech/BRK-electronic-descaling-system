@@ -54,6 +54,8 @@ import Thirteen from "./src/Image15.png"
 import Fourteen from "./src/Image16.png"
 import Fifteen from "./src/Image17.png"
 import Sixteen from "./src/Image18.png"
+import Seventeen from "./src/Image19.png"
+
 
 
 
@@ -63,6 +65,8 @@ import DTwo from "./src/Dimg2.png"
 import DThree from "./src/Dimg3.png"
 import DFour from "./src/Dimg4.png"
 import DFive from "./src/Dimg5.png"
+import DSix from "./src/Image10.jpeg"
+
 
 
 
@@ -351,6 +355,9 @@ const Agri = () => {
                 </div>
                 <div>
                     <img src={DFive} />
+                </div>
+                <div>
+                    <img src={DSix} />
                 </div>
             </Carousel>
              
