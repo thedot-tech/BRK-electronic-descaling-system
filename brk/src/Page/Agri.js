@@ -54,6 +54,8 @@ import Thirteen from "./src/Image15.png"
 import Fourteen from "./src/Image16.png"
 import Fifteen from "./src/Image17.png"
 import Sixteen from "./src/Image18.png"
+import Seventeen from "./src/Image19.png"
+
 
 
 
@@ -63,6 +65,9 @@ import DTwo from "./src/Dimg2.png"
 import DThree from "./src/Dimg3.png"
 import DFour from "./src/Dimg4.png"
 import DFive from "./src/Dimg5.png"
+import DSix from "./src/Dimg6.png"
+// import DSix from "./src/Image10.jpeg"
+
 
 
 
@@ -140,14 +145,15 @@ const Agri = () => {
     {
       imageSrc: ShieldIconImage,
       title: "Agriculture",
-      description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
+      
+      description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
     },
     { imageSrc: SupportIconImage, title: "Domestic",
-    description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
+    description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
   
   },
     { imageSrc: CustomizeIconImage, title: "Industry" ,
-    description: "Less Fertilizer Cost-30% De-Scaling of Piping Unclogged Water Jets Less Energy Required to Pump and Irrigate"
+    description: "Total sollution for HARD (salt) WATER SCALLING in Chillers/ Cooling Towers/ Heat exchangers."
   },
   
   ];
@@ -261,16 +267,7 @@ const Agri = () => {
               alignContent:'center',
               alignItems:'center'
             }}>
-              <a style={{
-                alignSelf:'center',
-                marginTop: '50px'
-              }}
-              href={AgriPDF}
-              download
-              >
-              Download Brochure
-
-                </a>
+           
             </div>
 
             <Testimonial
@@ -288,9 +285,9 @@ const Agri = () => {
           profileImageSrc:
             "",
           quote:
-            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
-          customerName: "Solara Active Pharma Science Ltd.",
-          customerTitle: "Pharma"
+            "Reduces irrigation time in half and increasing water spreading is in Soil, elongation between the branch get increased.",
+          customerName: "Banana",
+          customerTitle: "Agriculture"
         },
         {
           imageSrc:
@@ -298,8 +295,8 @@ const Agri = () => {
           profileImageSrc:
             "",
             quote:
-            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
-          customerName: "Pioneer Gloves Factory",
+            "Leaf burning due to saltwater are disappeared it increases soil softness, greenish to spinach leaf, weight, and volume to get raised.",
+          customerName: "Spinach ",
           customerTitle: "Farmer"
         },
         {
@@ -308,8 +305,18 @@ const Agri = () => {
           profileImageSrc:
             "",
             quote:
-            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
-          customerName: "UKP Radha Krishnan",
+            "Yield gets multiplied without any fertilizers, Besides increases the bright color and weight of the flower.",
+          customerName: "Jasmin Usilampatti",
+          customerTitle: "Farmer"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "Even the water more salinity structure water devices remove and reduce salt deposition on drip laterals, pipelines, filter, and soil, it increases our yields with uniformity, Glossyness in lemon.",
+          customerName: "Lemon - Platosen samarasam",
           customerTitle: "Farmer"
         }
       ]}
@@ -342,6 +349,9 @@ const Agri = () => {
                 <div>
                     <img src={DFive} />
                 </div>
+                <div>
+                    <img src={DSix} />
+                </div>
             </Carousel>
              
 
@@ -353,16 +363,80 @@ const Agri = () => {
               alignContent:'center',
               alignItems:'center'
             }}>
-              <a style={{
-                alignSelf:'center',
-                marginTop: '50px'
-              }}
-              href={DomesticPDF}
-              download
-              >
-              Download Brochure
+            
+            </div>
 
-                </a>
+            <Testimonial
+      subheading="Testimonials"
+      heading={
+        <>
+          Our Clients <span tw="text-blue-500">Love Us.</span>
+        </>
+      }
+      description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
+      testimonials={[
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+          quote:
+            "Scaling in the bathroom tiles, pipes and buckets are removed without using any acid and chemicals, and heavy brushing, salt precipitation on vessels are removed automatically after washing.",
+          customerName: "Khadhija Electrics",
+          customerTitle: "Electrics"
+        },
+        {
+          imageSrc:
+          null,
+          profileImageSrc:
+            "",
+            quote:
+            "After installation of BRK Systems structure water devices, Foams come freely which washing and Bathing itchiness and hair fizziness after bathing in saltwater are reduced.",
+          customerName: "Kalingapatti",
+          customerTitle: "Domestic"
+        },
+        
+      ]}
+      textOnLeft={true}
+    />
+            </div>
+           
+          )
+        }
+        else if(Industry){
+          return(
+            <div style={{alignContent:'center'}}>
+              <Heading><span tw="text-green-700">Industry</span></Heading>
+              
+       
+              <Carousel>
+                <div>
+                    <img src={DOne} />
+                </div>
+                <div>
+                    <img src={DTwo} />
+                </div>
+                <div>
+                    <img src={DThree} />
+                </div>
+                <div>
+                    <img src={DFour} />
+                </div>
+                <div>
+                    <img src={DFive} />
+                </div>
+            </Carousel>
+             
+
+
+              
+
+            <div style={{
+              margin: '0 auto',
+              alignContent:'center',
+              alignItems:'center'
+            }}>
+            
             </div>
 
             <Testimonial
@@ -404,18 +478,11 @@ const Agri = () => {
           customerName: "UKP Radha Krishnan",
           customerTitle: "Farmer"
         }
+        
       ]}
       textOnLeft={true}
     />
             </div>
-           
-          )
-        }
-        else if(Industry){
-          return(
-            <h2>
-              Industry
-            </h2>
           )
         }
     }
@@ -424,7 +491,7 @@ const Agri = () => {
     return(
         <AnimationRevealPage>
       <ThreeColumnContainer>
-      <Heading>Why choose <span tw="text-green-700">our product?</span></Heading>
+      <Heading>Our<span tw="text-green-700"> products</span></Heading>
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
