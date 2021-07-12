@@ -65,7 +65,8 @@ import DTwo from "./src/Dimg2.png"
 import DThree from "./src/Dimg3.png"
 import DFour from "./src/Dimg4.png"
 import DFive from "./src/Dimg5.png"
-import DSix from "./src/Image10.jpeg"
+import DSix from "./src/Dimg6.png"
+// import DSix from "./src/Image10.jpeg"
 
 
 
@@ -144,14 +145,15 @@ const Agri = () => {
     {
       imageSrc: ShieldIconImage,
       title: "Agriculture",
-      description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
+      
+      description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
     },
     { imageSrc: SupportIconImage, title: "Domestic",
-    description: "Structure water device benefits in agriculture such as soil hold moisture longer, increase root growth, increase seed germination."
+    description: "BRK systems sort out the problem due to hard water or unstructured water in a home. it also unclogged water jets which help to clear out the clog present inside the pipes of your homes."
   
   },
     { imageSrc: CustomizeIconImage, title: "Industry" ,
-    description: "Less Fertilizer Cost-30% De-Scaling of Piping Unclogged Water Jets Less Energy Required to Pump and Irrigate"
+    description: "Total sollution for HARD (salt) WATER SCALLING in Chillers/ Cooling Towers/ Heat exchangers."
   },
   
   ];
@@ -265,16 +267,7 @@ const Agri = () => {
               alignContent:'center',
               alignItems:'center'
             }}>
-              <a style={{
-                alignSelf:'center',
-                marginTop: '50px'
-              }}
-              href={AgriPDF}
-              download
-              >
-              Download Brochure
-
-                </a>
+           
             </div>
 
             <Testimonial
@@ -370,16 +363,7 @@ const Agri = () => {
               alignContent:'center',
               alignItems:'center'
             }}>
-              <a style={{
-                alignSelf:'center',
-                marginTop: '50px'
-              }}
-              href={DomesticPDF}
-              download
-              >
-              Download Brochure
-
-                </a>
+            
             </div>
 
             <Testimonial
@@ -452,16 +436,7 @@ const Agri = () => {
               alignContent:'center',
               alignItems:'center'
             }}>
-              <a style={{
-                alignSelf:'center',
-                marginTop: '50px'
-              }}
-              href={DomesticPDF}
-              download
-              >
-              Download Brochure
-
-                </a>
+            
             </div>
 
             <Testimonial
