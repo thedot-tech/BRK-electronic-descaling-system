@@ -188,7 +188,7 @@ const showProductStatus = () => {
             <StyledResponsiveVideoEmbed
             //TODO We need to change the video
               // url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=1&responsive=1"
-              url="//player.vimeo.com/video/562188433?title=0?&portrait=0&byline=0&autoplay=1&responsive=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              url="//player.vimeo.com/video/562188433?title=0?&muted=1&portrait=0&byline=0&autoplay=1&responsive=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               background="transparent"
               
             />
