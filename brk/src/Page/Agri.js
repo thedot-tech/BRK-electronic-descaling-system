@@ -3,7 +3,7 @@
 
 
 
-import React,{useState} from "react";
+import React,{useState,useRef} from "react";
 import defaultCardImage from "../images/shield-icon.svg";
 
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -158,7 +158,7 @@ const Agri = () => {
   
   ];
 
-
+  let myRef = useRef();
   const [Agriculture, setAgriculture] = useState(false);
   const [Domestic, setDomestic] = useState(false);
   const [Industry, setIndustry] = useState(false);
@@ -208,7 +208,7 @@ const Agri = () => {
         if(Agriculture){
           return(
             
-            <div style={{alignContent:'center'}}>
+            <div style={{alignContent:'center'}} id="contact-us">
               <Heading><span tw="text-green-700">Agriculture</span></Heading>
               
               <Carousel>
@@ -486,7 +486,10 @@ const Agri = () => {
           )
         }
     }
-
+    const scroll = () => {
+      const section = document.querySelector( '#contact-us' );
+      section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    };
 
     return(
         <AnimationRevealPage>
@@ -502,7 +505,14 @@ const Agri = () => {
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
                 </p>
               </span>
-              <Button onClick={() => setProduct(card.title)} variant="outline-success">See Now</Button>
+              <Button  onClick={() => 
+              {
+              scroll()
+
+              setProduct(card.title)
+              }
+              
+              } variant="outline-success">See Now</Button>
             </Card>
           </Column>
         ))}
