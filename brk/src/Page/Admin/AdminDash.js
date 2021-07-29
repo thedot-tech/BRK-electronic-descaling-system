@@ -48,6 +48,11 @@ export default function AdminDash() {
     const [showDashs, setshowDash] = useState(false);
 
 
+    const [testimonyMain, settestimonyMain] = useState('');
+    const [testimonyName, settestimonyName] = useState('');
+    const [testimonyOccc, settestimonyOccc] = useState('');
+    const [testimonyFrom, settestimonyFrom] = useState('Home Page');
+
     const [addNews, setaddNews] = useState(false);
     const [addVideo, setaddVideo] = useState(false);
     const [seeClient, setseeClients] = useState(false);
@@ -152,6 +157,30 @@ export default function AdminDash() {
             
             )
     }
+
+    const saveTestimony = (e) => {
+        e.preventDefault();
+        const uid = shortid.generate();
+        firebase.database().ref(`/testinomy/${testimonyFrom}/${uid}`).set({
+            main:testimonyMain,
+            name:testimonyName,
+            occ:testimonyOccc,
+            from:testimonyFrom
+
+        }).then(
+            console.log("Saved Data"),
+
+            seturl(''),
+            setsuccess(true),
+
+            
+
+         ).catch(err => 
+            console.log(err)
+            
+            )
+    }
+
     const savedSuccess = () => {
         if(success)
        { return(
@@ -172,13 +201,14 @@ export default function AdminDash() {
 
     const testChangeHandler = (name) => event => {
         if(name === 'main')
-            setheading(event.target.value);
+        settestimonyMain(event.target.value);
         else if(name === 'name')
-            setnews(event.target.value);
+        settestimonyName(event.target.value);
         else if(name === 'from')
-            seturl(event.target.value);
+        settestimonyFrom(event.target.value);
         else if(name === 'occ')
-            seturl(event.target.value);
+        settestimonyOccc(event.target.value);
+
     }
 
     const dealerChangeHandler = (name) => event => {
@@ -308,17 +338,17 @@ export default function AdminDash() {
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Add Client's Testimony</Form.Label>
-    <Form.Control placeholder="From them" onChange={() => testChangeHandler('main')} />
+    <Form.Control placeholder="From them" onChange={testChangeHandler('main')} />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Client's Name</Form.Label>
-    <Form.Control placeholder="Name" onChange={() => testChangeHandler('name')} />
+    <Form.Control placeholder="Name" onChange={testChangeHandler('name')} />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Client's Occupation</Form.Label>
-    <Form.Control placeholder="Name" onChange={() => testChangeHandler('occ')} />
+    <Form.Control placeholder="Name" onChange={testChangeHandler('occ')} />
   </Form.Group>
 
   <Button variant="primary" type="submit" block onClick={saveTestimony}>
