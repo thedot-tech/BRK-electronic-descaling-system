@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import tw from 'twin.macro' //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
+import firebase from 'firebase'
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImage.js";
 import News from "./NewsFeeds"
@@ -22,8 +23,25 @@ import Client_One from "../images/client_one@2x.png"
 import Client_Two from "../images/client_two@2x.png"
 
 
-export default () => (
-  <AnimationRevealPage>
+export default () => {
+
+  const [homeTestimony, sethomeTestimony] = useState([])
+  const getHomeTestimony = () => {
+    firebase.database().ref(`/testinomy/Home Page`).on('value' , snap => {
+      if(snap.val()){
+        console.log(snap.val());
+        sethomeTestimony(Object.values(snap.val()))
+      }
+    })
+  }
+
+  useEffect(() => {
+    getHomeTestimony()
+  }, [])
+
+
+  return(
+<AnimationRevealPage>
     <Hero/>
     <News/>
     <VideoSection/>
@@ -39,38 +57,7 @@ export default () => (
         </>
       }
       description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
-      testimonials={[
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-          quote:
-            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
-          customerName: "Solara Active Pharma Science Ltd.",
-          customerTitle: "Pharma"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
-          customerName: "Pioneer Gloves Factory",
-          customerTitle: "Farmer"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
-          customerName: "UKP Radha Krishnan",
-          customerTitle: "Farmer"
-        }
-      ]}
+      testimonials={homeTestimony}
       textOnLeft={true}
     />
     <FAQ
@@ -86,4 +73,6 @@ export default () => (
     />
     <Footer />
   </AnimationRevealPage>
-);
+  )
+  
+};
