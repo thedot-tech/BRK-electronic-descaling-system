@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Container, Form,Button,Alert,Row,Col,Card } from 'react-bootstrap'
+import { Container, Form,Button,Alert,Row,Col,Card,Spinner } from 'react-bootstrap'
 import firebase from 'firebase'
 import { connect } from 'react-firebase'
 import shortid from 'shortid'
@@ -46,7 +46,16 @@ export default function AdminDash() {
     const [password, setpassword] = useState(null);
     const [showa, setshowa] = useState(false);
     const [showDashs, setshowDash] = useState(false);
+    const [logourl, setlogourl] = useState('');
 
+
+    const [logo, setlogo] = useState(null);
+
+    const handleThemeLogo = (e) => {
+        setlogo(e.target.files[0])
+    }
+    const [progress, setProgress] = useState(false);
+    const [showFile, setshowFile] = useState(true)
 
     const [testimonyMain, settestimonyMain] = useState('');
     const [testimonyName, settestimonyName] = useState('');
@@ -165,7 +174,8 @@ export default function AdminDash() {
             main:testimonyMain,
             name:testimonyName,
             occ:testimonyOccc,
-            from:testimonyFrom
+            from:testimonyFrom,
+            pic:logourl
 
         }).then(
             console.log("Saved Data"),
@@ -189,6 +199,33 @@ export default function AdminDash() {
            </Alert>
         )}
     }
+    const uploadPic = (e) => {
+        e.preventDefault();
+        setProgress(true)
+        setshowFile(false)
+        let file = logo;
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var uploadTask = storageRef.child(`testimony/pic/${file.name}`).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+              var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+
+            },(error) =>{
+              throw error
+            },() =>{
+              // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+        
+              uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                setlogourl(url)
+                setProgress(false)
+              })
+        
+           }
+         ) 
+    }
+
 
     const newsChangeHandler = (name) => event => {
         if(name === 'heading')
@@ -288,6 +325,7 @@ export default function AdminDash() {
   </Form.Group>
 
 
+
   <Button variant="primary" type="submit" block onClick={saveNews}>
     Submit
   </Button>
@@ -350,7 +388,35 @@ export default function AdminDash() {
     <Form.Label>Client's Occupation</Form.Label>
     <Form.Control placeholder="Name" onChange={testChangeHandler('occ')} />
   </Form.Group>
+  <div>
+  {showFile ? (
+<div>
+<Form>
+<Form.Group>
+<Form.File type="file" id="file" label="Upload the logo for Topic" onChange={handleThemeLogo}/>
+</Form.Group>
+</Form>
+<Button variant="contained" type="submit" variant="success" style={{marginBottom:50}} onClick={uploadPic}>
+Upload
+</Button>
+</div>
+) : (
+   (progress && !showFile) ? (
+    <Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
 
+   ) : (
+        <div>
+            <Alert severity="success">Logo upload done</Alert>
+            </div>
+   )
+
+   
+)
+
+}
+</div>
   <Button variant="primary" type="submit" block onClick={saveTestimony}>
     Submit
   </Button>
