@@ -191,6 +191,14 @@ export default function AdminDash() {
             console.log("Saved Data"),
 
             seturl(''),
+            settestimonyFrom(''),
+            settestimonyName(''),
+            settestimonyOccc(''),
+            settestimonyMain(''),
+            setshowFile(true),
+            setshowFile1(true),
+            setlogourl(''),
+            setlogourl1(''),
             setsuccess(true),
 
             
