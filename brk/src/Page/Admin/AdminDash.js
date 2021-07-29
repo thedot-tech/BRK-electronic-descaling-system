@@ -51,12 +51,21 @@ export default function AdminDash() {
 
     const [logo, setlogo] = useState(null);
 
+    const [logourl1, setlogourl1] = useState('');
+
+
+    const [logo1, setlogo1] = useState(null);
+
     const handleThemeLogo = (e) => {
         setlogo(e.target.files[0])
     }
+    const handleThemeLogo1 = (e) => {
+        setlogo1(e.target.files[0])
+    }
     const [progress, setProgress] = useState(false);
     const [showFile, setshowFile] = useState(true)
-
+    const [progress1, setProgress1] = useState(false);
+    const [showFile1, setshowFile1] = useState(true)
     const [testimonyMain, settestimonyMain] = useState('');
     const [testimonyName, settestimonyName] = useState('');
     const [testimonyOccc, settestimonyOccc] = useState('');
@@ -171,11 +180,12 @@ export default function AdminDash() {
         e.preventDefault();
         const uid = shortid.generate();
         firebase.database().ref(`/testinomy/${testimonyFrom}/${uid}`).set({
-            main:testimonyMain,
-            name:testimonyName,
-            occ:testimonyOccc,
+            quote:testimonyMain,
+            customerName:testimonyName,
+            customerTitle:testimonyOccc,
             from:testimonyFrom,
-            pic:logourl
+            imageSrc:logourl,
+            profileImageSrc:logourl1
 
         }).then(
             console.log("Saved Data"),
@@ -220,6 +230,33 @@ export default function AdminDash() {
               uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
                 setlogourl(url)
                 setProgress(false)
+              })
+        
+           }
+         ) 
+    }
+
+    const uploadPic1 = (e) => {
+        e.preventDefault();
+        setProgress1(true)
+        setshowFile1(false)
+        let file = logo1;
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var uploadTask = storageRef.child(`testimony/profile/${file.name}`).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+              var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+
+            },(error) =>{
+              throw error
+            },() =>{
+              // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+        
+              uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                setlogourl1(url)
+                setProgress1(false)
               })
         
            }
@@ -359,9 +396,9 @@ export default function AdminDash() {
             return(
 
                     <Form.Group controlId="formBasicEmail">
-    <Form.Label>Add Location</Form.Label>
+
     <Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Select Districts</Form.Label>
+    <Form.Label>Select Place to post</Form.Label>
     <Form.Control as="select" onChange={testChangeHandler('from')}>
     <option>Home Page</option>
     <option>Agriculture</option>
@@ -389,11 +426,40 @@ export default function AdminDash() {
     <Form.Control placeholder="Name" onChange={testChangeHandler('occ')} />
   </Form.Group>
   <div>
+  {showFile1 ? (
+<div>
+<Form>
+<Form.Group>
+<Form.File type="file" id="file" label="Upload client's profile pic" onChange={handleThemeLogo1}/>
+</Form.Group>
+</Form>
+<Button variant="contained" type="submit" variant="danger" style={{marginBottom:50}} onClick={uploadPic1}>
+Upload
+</Button>
+</div>
+) : (
+   (progress1 && !showFile1) ? (
+    <Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+
+   ) : (
+        <div>
+            <Alert severity="success">Logo upload done</Alert>
+            </div>
+   )
+
+   
+)
+
+}
+</div>
+  <div>
   {showFile ? (
 <div>
 <Form>
 <Form.Group>
-<Form.File type="file" id="file" label="Upload the logo for Topic" onChange={handleThemeLogo}/>
+<Form.File type="file" id="file" label="Upload client's pic" onChange={handleThemeLogo}/>
 </Form.Group>
 </Form>
 <Button variant="contained" type="submit" variant="success" style={{marginBottom:50}} onClick={uploadPic}>
