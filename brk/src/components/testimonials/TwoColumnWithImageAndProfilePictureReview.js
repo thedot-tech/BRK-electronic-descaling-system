@@ -145,8 +145,9 @@ export default ({
                         </Quote>
                       </QuoteContainer>
                       <CustomerInfo>
-                        {/* <CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} /> */}
+                        <CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} />
                         <CustomerTextInfo>
+            
                           <CustomerName>{testimonial.customerName}</CustomerName>
                           <CustomerTitle>{testimonial.customerTitle}</CustomerTitle>
                         </CustomerTextInfo>

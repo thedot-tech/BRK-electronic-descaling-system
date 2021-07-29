@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Container, Form,Button,Alert,Row,Col,Card } from 'react-bootstrap'
+import { Container, Form,Button,Alert,Row,Col,Card,Spinner } from 'react-bootstrap'
 import firebase from 'firebase'
 import { connect } from 'react-firebase'
 import shortid from 'shortid'
@@ -46,12 +46,37 @@ export default function AdminDash() {
     const [password, setpassword] = useState(null);
     const [showa, setshowa] = useState(false);
     const [showDashs, setshowDash] = useState(false);
+    const [logourl, setlogourl] = useState('');
 
+
+    const [logo, setlogo] = useState(null);
+
+    const [logourl1, setlogourl1] = useState('');
+
+
+    const [logo1, setlogo1] = useState(null);
+
+    const handleThemeLogo = (e) => {
+        setlogo(e.target.files[0])
+    }
+    const handleThemeLogo1 = (e) => {
+        setlogo1(e.target.files[0])
+    }
+    const [progress, setProgress] = useState(false);
+    const [showFile, setshowFile] = useState(true)
+    const [progress1, setProgress1] = useState(false);
+    const [showFile1, setshowFile1] = useState(true)
+    const [testimonyMain, settestimonyMain] = useState('');
+    const [testimonyName, settestimonyName] = useState('');
+    const [testimonyOccc, settestimonyOccc] = useState('');
+    const [testimonyFrom, settestimonyFrom] = useState('Home Page');
 
     const [addNews, setaddNews] = useState(false);
     const [addVideo, setaddVideo] = useState(false);
     const [seeClient, setseeClients] = useState(false);
     const [addDealers, setaddDealers] = useState(false);
+    const [test, setTest] = useState(false);
+
 
     const [DName, setDName] = useState('');
     const [DPhone, setDPhone] = useState('');
@@ -150,6 +175,32 @@ export default function AdminDash() {
             
             )
     }
+
+    const saveTestimony = (e) => {
+        e.preventDefault();
+        const uid = shortid.generate();
+        firebase.database().ref(`/testinomy/${testimonyFrom}/${uid}`).set({
+            quote:testimonyMain,
+            customerName:testimonyName,
+            customerTitle:testimonyOccc,
+            from:testimonyFrom,
+            imageSrc:logourl,
+            profileImageSrc:logourl1
+
+        }).then(
+            console.log("Saved Data"),
+
+            seturl(''),
+            setsuccess(true),
+
+            
+
+         ).catch(err => 
+            console.log(err)
+            
+            )
+    }
+
     const savedSuccess = () => {
         if(success)
        { return(
@@ -158,6 +209,60 @@ export default function AdminDash() {
            </Alert>
         )}
     }
+    const uploadPic = (e) => {
+        e.preventDefault();
+        setProgress(true)
+        setshowFile(false)
+        let file = logo;
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var uploadTask = storageRef.child(`testimony/pic/${file.name}`).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+              var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+
+            },(error) =>{
+              throw error
+            },() =>{
+              // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+        
+              uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                setlogourl(url)
+                setProgress(false)
+              })
+        
+           }
+         ) 
+    }
+
+    const uploadPic1 = (e) => {
+        e.preventDefault();
+        setProgress1(true)
+        setshowFile1(false)
+        let file = logo1;
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var uploadTask = storageRef.child(`testimony/profile/${file.name}`).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+              var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+
+            },(error) =>{
+              throw error
+            },() =>{
+              // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+        
+              uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                setlogourl1(url)
+                setProgress1(false)
+              })
+        
+           }
+         ) 
+    }
+
 
     const newsChangeHandler = (name) => event => {
         if(name === 'heading')
@@ -167,6 +272,19 @@ export default function AdminDash() {
         else if(name === 'url')
             seturl(event.target.value);
     }
+
+    const testChangeHandler = (name) => event => {
+        if(name === 'main')
+        settestimonyMain(event.target.value);
+        else if(name === 'name')
+        settestimonyName(event.target.value);
+        else if(name === 'from')
+        settestimonyFrom(event.target.value);
+        else if(name === 'occ')
+        settestimonyOccc(event.target.value);
+
+    }
+
     const dealerChangeHandler = (name) => event => {
         if(name === 'dname')
             setDName(event.target.value);
@@ -188,12 +306,15 @@ export default function AdminDash() {
         setaddVideo(false)
         setseeClients(false)
         setaddDealers(false)
+        setTest(false)
 
     }
     const addVideoBtn = () => {
         setaddVideo(true)
         setaddNews(false)
         setseeClients(false)
+        setTest(false)
+
         setaddDealers(false)
 
 
@@ -202,15 +323,25 @@ export default function AdminDash() {
         setaddVideo(false)
         setaddNews(false)
         setseeClients(false)
+        setTest(false)
         setaddDealers(true)
 
 
+    }
+    const addTestBtn =() => {
+        setaddVideo(false)
+        setaddNews(false)
+        setseeClients(false)
+        setaddDealers(false)
+        setTest(true)
     }
     const seeClients = () => {
         setaddVideo(false)
         setaddNews(false)
         setseeClients(true)
         setaddDealers(false)
+        setTest(false)
+
 
 
     }
@@ -229,6 +360,7 @@ export default function AdminDash() {
     <Form.Control type="text" placeholder="Enter News (max 55)" value={news} onChange={newsChangeHandler('news')}/>
     
   </Form.Group>
+
 
 
   <Button variant="primary" type="submit" block onClick={saveNews}>
@@ -257,6 +389,108 @@ export default function AdminDash() {
               </Form>
         )
     }
+    }
+
+    const addTestimonySection = () => {
+        if(test){
+            return(
+
+                    <Form.Group controlId="formBasicEmail">
+
+    <Form.Group controlId="exampleForm.ControlSelect1">
+    <Form.Label>Select Place to post</Form.Label>
+    <Form.Control as="select" onChange={testChangeHandler('from')}>
+    <option>Home Page</option>
+    <option>Agriculture</option>
+    <option>Domestic</option>
+    <option>Industry</option>
+
+
+
+
+    </Form.Control>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Add Client's Testimony</Form.Label>
+    <Form.Control placeholder="From them" onChange={testChangeHandler('main')} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Client's Name</Form.Label>
+    <Form.Control placeholder="Name" onChange={testChangeHandler('name')} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Client's Occupation</Form.Label>
+    <Form.Control placeholder="Name" onChange={testChangeHandler('occ')} />
+  </Form.Group>
+  <div>
+  {showFile1 ? (
+<div>
+<Form>
+<Form.Group>
+<Form.File type="file" id="file" label="Upload client's profile pic" onChange={handleThemeLogo1}/>
+</Form.Group>
+</Form>
+<Button variant="contained" type="submit" variant="danger" style={{marginBottom:50}} onClick={uploadPic1}>
+Upload
+</Button>
+</div>
+) : (
+   (progress1 && !showFile1) ? (
+    <Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+
+   ) : (
+        <div>
+            <Alert severity="success">Logo upload done</Alert>
+            </div>
+   )
+
+   
+)
+
+}
+</div>
+  <div>
+  {showFile ? (
+<div>
+<Form>
+<Form.Group>
+<Form.File type="file" id="file" label="Upload client's pic" onChange={handleThemeLogo}/>
+</Form.Group>
+</Form>
+<Button variant="contained" type="submit" variant="success" style={{marginBottom:50}} onClick={uploadPic}>
+Upload
+</Button>
+</div>
+) : (
+   (progress && !showFile) ? (
+    <Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+
+   ) : (
+        <div>
+            <Alert severity="success">Logo upload done</Alert>
+            </div>
+   )
+
+   
+)
+
+}
+</div>
+  <Button variant="primary" type="submit" block onClick={saveTestimony}>
+    Submit
+  </Button>
+  </Form.Group>
+     
+            )
+           
+        }
     }
     const addDealersSection = () => {
         if(addDealers){
@@ -404,6 +638,11 @@ export default function AdminDash() {
         Add Dealers
     </Button>
         </Col>
+        <Col>
+        <Button variant="primary" size="lg" onClick={addTestBtn}>
+        Add Testimony
+    </Button>
+        </Col>
       </Row>
     </Container>
             );
@@ -426,6 +665,7 @@ export default function AdminDash() {
                {addNewsSection()}
                 {addVideoSection()}
                 {addDealersSection()}
+                {addTestimonySection()}
                 {datas && seeClient ? (
           console.log(datas),
           datas.map((key) => {

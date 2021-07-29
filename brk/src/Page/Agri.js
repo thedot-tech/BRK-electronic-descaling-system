@@ -203,12 +203,25 @@ const Agri = () => {
       { url:  DFive},
     ];
 
-
+    const scroll = () => {
+      const section = document.querySelector( '#contact-us' );
+      section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    };
+    const handleOnClick = (event) => {
+      //.current is verification that your element has rendered
+      if(this.myDivToFocus.current){
+          this.myDivToFocus.current.scrollIntoView({ 
+             behavior: "smooth", 
+             block: "nearest"
+          })
+      }
+  }
     const showProduct = (products) => {
+
         if(Agriculture){
           return(
             
-            <div style={{alignContent:'center'}} id="contact-us">
+            <div style={{alignContent:'center'}}>
               <Heading><span tw="text-green-700">Agriculture</span></Heading>
               
               <Carousel>
@@ -486,10 +499,7 @@ const Agri = () => {
           )
         }
     }
-    const scroll = () => {
-      const section = document.querySelector( '#contact-us' );
-      section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
-    };
+  
 
     return(
         <AnimationRevealPage>
@@ -507,9 +517,9 @@ const Agri = () => {
               </span>
               <Button  onClick={() => 
               {
-              scroll()
 
               setProduct(card.title)
+           
               }
               
               } variant="outline-success">See Now</Button>
