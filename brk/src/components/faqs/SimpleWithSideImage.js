@@ -56,7 +56,7 @@ export default ({
 
   const [lang, setlang] = useState('English');
   const selectLang = (t) => {
-    console.log(">>>>>>>",t.target.value);
+    // console.log(">>>>>>>",t.target.value);
     setlang(t.target.value);
   }
 
@@ -147,7 +147,7 @@ export default ({
               {subheading ? <Subheading>{subheading}</Subheading> : null}
               <Heading>{heading}</Heading>
               <Description>{description}</Description>
-              <div class="form-floating">
+              <div class="form-floating" style={{paddingLeft:115}}>
   <select class="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={(t) => selectLang(t)}>
     <option value="English" selected>English</option>
     <option value="Tamil">Tamil</option>
