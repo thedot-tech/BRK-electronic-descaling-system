@@ -46,7 +46,8 @@ export default ({
   imageSrc = "https://images.unsplash.com/photo-1579427421635-a0015b804b2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
   imageContain = false,
   imageShadow = true,
-  faqs = null
+  faqs = null,
+  faqs1= null
 }) => {
   /*
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
@@ -84,7 +85,41 @@ export default ({
     }
   ];
 
+
+  const defaultFaqs1 = [
+    {
+      question: "சுத்திகரிக்கப்பட்ட நீரில் இருந்த உப்புக்கு என்ன நடக்கும்? ",
+      answer:
+        "BRK SYSTEMS structured நீர் சாதனம் உப்பு மூலக்கூறுகளில் உள்ள படிகமயமாக்கல்(Crystallization) செயல்முறையை ரத்துசெய்கிறது, இதனால் தாதுப்புக்கள் தாவரங்களால் எளிதில் உறிஞ்சப்படும்."
+    },
+    {
+      question: "மாற்று அல்லது பராமரிப்பு தேவையா?",
+
+      answer:
+        "BRK SYSTEMS structured நீர் சாதனத்திற்கு மாற்று அல்லது பராமரிப்பு எதுவும் தேவையில்லை."
+    },
+    {
+      question: "குழாய்களில் ஏற்கனவே தடுக்கப்பட்ட அல்லது படிந்துள்ள உப்புக்கு என்ன நடக்கும்?",
+
+      answer:
+        "BRK SYSTEMS structured  water device  தானாகவே நாளுக்கு நாள் குழாயில் தடுக்கப்பட்ட அல்லது படிந்துள்ள உப்பை நீக்குகிறது."
+    },
+    {
+      question: "பொருத்தும் செயல்முறை என்ன?",
+
+      answer:
+        "BRK SYSTEMS structured நீர் சாதனத்தை பொருத்தும் செயல்முறை மிகவும் எளிதானது.  தற்போதுள்ள  குழாய்  அமைப்பில் எந்தவிதமான மாற்றங்களையும் செய்யாது.  BRK SYSTEMS கட்டமைப்பு நீர் சாதனம் இரண்டு   C -type  துண்டுகளாக பிரிக்கப்பட்டு குழாயைச் சுற்றி வைத்துப் பொருத்தப்படும். மிகவும் எளிதான மற்றும் 2 நிமிட செயல்முறை."
+    },
+    {
+      question: "செயல்பாட்டில் மின்சாரம் அல்லது இரசாயனம் சம்பந்தப்பட்டுள்ளதா?",
+
+      answer:
+        "BRK SYSTEMS கட்டமைப்பு நீர் சாதனம்  சூழல் சார்ந்தது (eco-friendly) . மின்சாரம் அல்லது எந்தவொரு இரசாயனமும் இல்லை."
+    }
+  ];
   if (!faqs || faqs.length === 0) faqs = defaultFaqs;
+  if (!faqs1 || faqs1.length === 0) faqs1 = defaultFaqs;
+
 
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
@@ -105,8 +140,45 @@ export default ({
               {subheading ? <Subheading>{subheading}</Subheading> : null}
               <Heading>{heading}</Heading>
               <Description>{description}</Description>
+              <div class="form-floating">
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <option selected>Language</option>
+    <option value="English">English</option>
+    <option value="Tamil">Tamil</option>
+  </select>
+
+</div>
               <FAQSContainer>
                 {faqs.map((faq, index) => (
+                  <FAQ
+                    key={index}
+                    onClick={() => {
+                      toggleQuestion(index);
+                    }}
+                    className="group"
+                  >
+                    <Question>
+                      <QuestionText>{faq.question}</QuestionText>
+                      <QuestionToggleIcon>
+                        {activeQuestionIndex === index ? <MinusIcon /> : <PlusIcon />}
+                      </QuestionToggleIcon>
+                    </Question>
+                    <Answer
+                      variants={{
+                        open: { opacity: 1, height: "auto", marginTop: "16px" },
+                        collapsed: { opacity: 0, height: 0, marginTop: "0px" }
+                      }}
+                      initial="collapsed"
+                      animate={activeQuestionIndex === index ? "open" : "collapsed"}
+                      transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      {faq.answer}
+                    </Answer>
+                  </FAQ>
+                ))}
+              </FAQSContainer>
+              <FAQSContainer>
+                {faqs1.map((faq, index) => (
                   <FAQ
                     key={index}
                     onClick={() => {
