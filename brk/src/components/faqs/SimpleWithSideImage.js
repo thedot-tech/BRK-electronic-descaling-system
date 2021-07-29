@@ -53,6 +53,12 @@ export default ({
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
    * the faqs prop
    */
+
+  const [lang, setlang] = useState('English');
+  const selectLang = (t) => {
+    setlang(t);
+  }
+
   const defaultFaqs = [
     {
       question: "What happen to the salt in the treated water? ",
@@ -118,7 +124,7 @@ export default ({
     }
   ];
   if (!faqs || faqs.length === 0) faqs = defaultFaqs;
-  if (!faqs1 || faqs1.length === 0) faqs1 = defaultFaqs;
+  if (!faqs1 || faqs1.length === 0) faqs1 = defaultFaqs1;
 
 
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
@@ -141,43 +147,46 @@ export default ({
               <Heading>{heading}</Heading>
               <Description>{description}</Description>
               <div class="form-floating">
-  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-    <option selected>Language</option>
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={(t) => selectLang(t)}>
     <option value="English">English</option>
     <option value="Tamil">Tamil</option>
   </select>
 
 </div>
-              <FAQSContainer>
-                {faqs.map((faq, index) => (
-                  <FAQ
-                    key={index}
-                    onClick={() => {
-                      toggleQuestion(index);
-                    }}
-                    className="group"
-                  >
-                    <Question>
-                      <QuestionText>{faq.question}</QuestionText>
-                      <QuestionToggleIcon>
-                        {activeQuestionIndex === index ? <MinusIcon /> : <PlusIcon />}
-                      </QuestionToggleIcon>
-                    </Question>
-                    <Answer
-                      variants={{
-                        open: { opacity: 1, height: "auto", marginTop: "16px" },
-                        collapsed: { opacity: 0, height: 0, marginTop: "0px" }
-                      }}
-                      initial="collapsed"
-                      animate={activeQuestionIndex === index ? "open" : "collapsed"}
-                      transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-                    >
-                      {faq.answer}
-                    </Answer>
-                  </FAQ>
-                ))}
-              </FAQSContainer>
-              <FAQSContainer>
+{lang === 'English' ? (
+   <FAQSContainer>
+   {faqs.map((faq, index) => (
+     <FAQ
+       key={index}
+       onClick={() => {
+         toggleQuestion(index);
+       }}
+       className="group"
+     >
+       <Question>
+         <QuestionText>{faq.question}</QuestionText>
+         <QuestionToggleIcon>
+           {activeQuestionIndex === index ? <MinusIcon /> : <PlusIcon />}
+         </QuestionToggleIcon>
+       </Question>
+       <Answer
+         variants={{
+           open: { opacity: 1, height: "auto", marginTop: "16px" },
+           collapsed: { opacity: 0, height: 0, marginTop: "0px" }
+         }}
+         initial="collapsed"
+         animate={activeQuestionIndex === index ? "open" : "collapsed"}
+         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+       >
+         {faq.answer}
+       </Answer>
+     </FAQ>
+   ))}
+ </FAQSContainer>
+
+) : (
+
+<FAQSContainer>
                 {faqs1.map((faq, index) => (
                   <FAQ
                     key={index}
@@ -206,6 +215,9 @@ export default ({
                   </FAQ>
                 ))}
               </FAQSContainer>
+)}
+           
+              
             </FAQContent>
           </Column>
         </TwoColumn>
