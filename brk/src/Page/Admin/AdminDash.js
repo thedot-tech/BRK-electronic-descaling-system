@@ -52,6 +52,8 @@ export default function AdminDash() {
     const [addVideo, setaddVideo] = useState(false);
     const [seeClient, setseeClients] = useState(false);
     const [addDealers, setaddDealers] = useState(false);
+    const [test, setTest] = useState(false);
+
 
     const [DName, setDName] = useState('');
     const [DPhone, setDPhone] = useState('');
@@ -167,6 +169,18 @@ export default function AdminDash() {
         else if(name === 'url')
             seturl(event.target.value);
     }
+
+    const testChangeHandler = (name) => event => {
+        if(name === 'main')
+            setheading(event.target.value);
+        else if(name === 'name')
+            setnews(event.target.value);
+        else if(name === 'from')
+            seturl(event.target.value);
+        else if(name === 'occ')
+            seturl(event.target.value);
+    }
+
     const dealerChangeHandler = (name) => event => {
         if(name === 'dname')
             setDName(event.target.value);
@@ -188,12 +202,15 @@ export default function AdminDash() {
         setaddVideo(false)
         setseeClients(false)
         setaddDealers(false)
+        setTest(false)
 
     }
     const addVideoBtn = () => {
         setaddVideo(true)
         setaddNews(false)
         setseeClients(false)
+        setTest(false)
+
         setaddDealers(false)
 
 
@@ -202,15 +219,25 @@ export default function AdminDash() {
         setaddVideo(false)
         setaddNews(false)
         setseeClients(false)
+        setTest(false)
         setaddDealers(true)
 
 
+    }
+    const addTestBtn =() => {
+        setaddVideo(false)
+        setaddNews(false)
+        setseeClients(false)
+        setaddDealers(false)
+        setTest(true)
     }
     const seeClients = () => {
         setaddVideo(false)
         setaddNews(false)
         setseeClients(true)
         setaddDealers(false)
+        setTest(false)
+
 
 
     }
@@ -257,6 +284,51 @@ export default function AdminDash() {
               </Form>
         )
     }
+    }
+
+    const addTestimonySection = () => {
+        if(test){
+            return(
+
+                    <Form.Group controlId="formBasicEmail">
+    <Form.Label>Add Location</Form.Label>
+    <Form.Group controlId="exampleForm.ControlSelect1">
+    <Form.Label>Select Districts</Form.Label>
+    <Form.Control as="select" onChange={testChangeHandler('from')}>
+    <option>Home Page</option>
+    <option>Agriculture</option>
+    <option>Domestic</option>
+    <option>Industry</option>
+
+
+
+
+    </Form.Control>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Add Client's Testimony</Form.Label>
+    <Form.Control placeholder="From them" onChange={() => testChangeHandler('main')} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Client's Name</Form.Label>
+    <Form.Control placeholder="Name" onChange={() => testChangeHandler('name')} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Client's Occupation</Form.Label>
+    <Form.Control placeholder="Name" onChange={() => testChangeHandler('occ')} />
+  </Form.Group>
+
+  <Button variant="primary" type="submit" block onClick={saveTestimony}>
+    Submit
+  </Button>
+  </Form.Group>
+     
+            )
+           
+        }
     }
     const addDealersSection = () => {
         if(addDealers){
@@ -404,6 +476,11 @@ export default function AdminDash() {
         Add Dealers
     </Button>
         </Col>
+        <Col>
+        <Button variant="primary" size="lg" onClick={addTestBtn}>
+        Add Testimony
+    </Button>
+        </Col>
       </Row>
     </Container>
             );
@@ -426,6 +503,7 @@ export default function AdminDash() {
                {addNewsSection()}
                 {addVideoSection()}
                 {addDealersSection()}
+                {addTestimonySection()}
                 {datas && seeClient ? (
           console.log(datas),
           datas.map((key) => {
