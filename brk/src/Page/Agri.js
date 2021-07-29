@@ -1,10 +1,7 @@
 
-
-
-
-
-import React,{useState,useRef} from "react";
+import React,{useState,useRef,useEffect} from "react";
 import defaultCardImage from "../images/shield-icon.svg";
+import firebase from 'firebase'
 
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
@@ -140,6 +137,43 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
 `;
 
 const Agri = () => {
+
+
+  const [agriTestimony, setagriTestimony] = useState([])
+  const getagriTestimony = () => {
+    firebase.database().ref(`/testinomy/Agriculture`).on('value' , snap => {
+      if(snap.val()){
+        console.log(snap.val());
+        setagriTestimony(Object.values(snap.val()))
+      }
+    })
+  }
+
+  const [domesticTestimony, setdomesticTestimony] = useState([])
+  const getdomesticTestimony = () => {
+    firebase.database().ref(`/testinomy/Domestic`).on('value' , snap => {
+      if(snap.val()){
+        console.log(snap.val());
+        setdomesticTestimony(Object.values(snap.val()))
+      }
+    })
+  }
+
+  const [industryTestimony, setindustryTestimony] = useState([])
+  const getindustryTestimony = () => {
+    firebase.database().ref(`/testinomy/Industry`).on('value' , snap => {
+      if(snap.val()){
+        console.log(snap.val());
+        setindustryTestimony(Object.values(snap.val()))
+      }
+    })
+  }
+
+  useEffect(() => {
+    getagriTestimony()
+    getdomesticTestimony()
+    getindustryTestimony()
+  }, [])
 
   const cards = [
     {
@@ -291,48 +325,7 @@ const Agri = () => {
         </>
       }
       description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
-      testimonials={[
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-          quote:
-            "Reduces irrigation time in half and increasing water spreading is in Soil, elongation between the branch get increased.",
-          customerName: "Banana",
-          customerTitle: "Agriculture"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "Leaf burning due to saltwater are disappeared it increases soil softness, greenish to spinach leaf, weight, and volume to get raised.",
-          customerName: "Spinach ",
-          customerTitle: "Farmer"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "Yield gets multiplied without any fertilizers, Besides increases the bright color and weight of the flower.",
-          customerName: "Jasmin Usilampatti",
-          customerTitle: "Farmer"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "Even the water more salinity structure water devices remove and reduce salt deposition on drip laterals, pipelines, filter, and soil, it increases our yields with uniformity, Glossyness in lemon.",
-          customerName: "Lemon - Platosen samarasam",
-          customerTitle: "Farmer"
-        }
-      ]}
+      testimonials={agriTestimony}
       textOnLeft={true}
     />
             </div>
@@ -387,29 +380,7 @@ const Agri = () => {
         </>
       }
       description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
-      testimonials={[
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-          quote:
-            "Scaling in the bathroom tiles, pipes and buckets are removed without using any acid and chemicals, and heavy brushing, salt precipitation on vessels are removed automatically after washing.",
-          customerName: "Khadhija Electrics",
-          customerTitle: "Electrics"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "After installation of BRK Systems structure water devices, Foams come freely which washing and Bathing itchiness and hair fizziness after bathing in saltwater are reduced.",
-          customerName: "Kalingapatti",
-          customerTitle: "Domestic"
-        },
-        
-      ]}
+      testimonials={domesticTestimony}
       textOnLeft={true}
     />
             </div>
@@ -460,39 +431,7 @@ const Agri = () => {
         </>
       }
       description="Here are what some of our amazing customers are saying about our product. And their are their thoughts about our product."
-      testimonials={[
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-          quote:
-            "BRK Systems electronic descaler is effective in the chiller unit, cleaning work was performed 2-times in 15 months. Temperature maintains less than 2.5 degrees Celcius in the condenser.",
-          customerName: "Solara Active Pharma Science Ltd.",
-          customerTitle: "Pharma"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "Hard precipitation of salt on tank drastically reduced like small salt flasks. Maintenance and cleaning process reduced from one day to 3 hours. Water wastage gets reduced simultaneously, and the water PH is maintained.",
-          customerName: "Pioneer Gloves Factory",
-          customerTitle: "Farmer"
-        },
-        {
-          imageSrc:
-          null,
-          profileImageSrc:
-            "",
-            quote:
-            "After installation of BRK system structure water unit. Coconut yield drastically increased to 5 times than before. Irrigation time gets reduced into 20 to 40%. Attains uniformity in Coconut and weight of coconut was increased.",
-          customerName: "UKP Radha Krishnan",
-          customerTitle: "Farmer"
-        }
-        
-      ]}
+      testimonials={industryTestimony}
       textOnLeft={true}
     />
             </div>
