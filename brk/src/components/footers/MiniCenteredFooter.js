@@ -50,7 +50,7 @@ export default () => {
             <SocialLink href="https://www.facebook.com/BRKsystemsWaterTreatment">
               <FacebookIcon />
             </SocialLink>
-            <SocialLink href="https://twitter.com">
+            <SocialLink href="https://twitter.com/brk_systems">
               <TwitterIcon />
             </SocialLink>
             <SocialLink href="https://www.youtube.com/channel/UCeaTvDkI12hpM0aCbFRU-bg">
