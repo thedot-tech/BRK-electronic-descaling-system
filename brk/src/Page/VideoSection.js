@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import {Img} from 'react-image'
+
 import ReactPlayer from 'react-player'
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
@@ -106,48 +108,26 @@ export default function VideoSection() {
               </div>
 
 
-              <div>
-              <Grid container className={classes.root} spacing={2}>
+              <div style={{marginTop:55}}>
+              <Grid container className={classes.root} spacing={4}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={spacing}>
-          {[0, 1, 2].map((value) => (
-            <Grid key={value} item>
-              <Paper className={classes.paper} />
+        {videos ? (videos.map((k) => (
+            <Grid onClick={()=> window.open(k.url, "_blank")} key={k.id} item>
+              <Img style={{height:170,width:115}} src={k.thumbnail} />
             </Grid>
-          ))}
+        ))) : (
+          <h4>
+          Loading .... 
+        </h4>
+        )
+          }
         </Grid>
       </Grid>
       </Grid>
 
                 </div>
-            <Carousel style={{justifyContent:"center",alignSelf:'center',marginTop:55}}>
-        {videos ? (videos.map((k) => {
-      return(
-
-         
-         
-
-
-        <Carousel.Item>
-  
-
-
-<ReactPlayer url={k.url} muted={true} className="d-block w-100"/>
-
-
-  </Carousel.Item>
-  
-      
-      )
-    })) : (
-      <div>
-        <h4>
-          Loading .... 
-        </h4>
-        </div>
-    )
-  }
-</Carousel>
+           
 
        
       </Container>
