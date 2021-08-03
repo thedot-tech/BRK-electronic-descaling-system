@@ -149,7 +149,8 @@ export default function AdminDash() {
 
             seturl(''),
             setsuccess(true),
-
+            setlogour2(''),
+            setshowFile3(true)
             
 
          ).catch(err => 
