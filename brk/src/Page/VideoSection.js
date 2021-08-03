@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import {Img} from 'react-image'
+
 import ReactPlayer from 'react-player'
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
@@ -7,7 +9,13 @@ import firebase from 'firebase'
 // import '~video-react/dist/video-react.css';
 import { Player } from 'video-react';
 import { connect } from 'react-firebase'
-
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import Paper from '@material-ui/core/Paper';
 import Youtube from "./src/youtube@2x.png"
 
 const firebaseConfig = {
@@ -28,7 +36,18 @@ const firebaseConfig = {
    }
   
 
-
+   const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+  }));
 
 export default function VideoSection() {
 
@@ -66,6 +85,14 @@ export default function VideoSection() {
       console.log(url);
           window.open(url);
   }
+
+  const [spacing, setSpacing] = React.useState(2);
+  const classes = useStyles();
+
+  const handleChange = (event) => {
+    setSpacing(Number(event.target.value));
+  };
+
     return (
         <Container style={{marginTop:20,marginBottom:50}}>
             <Container>
@@ -80,34 +107,27 @@ export default function VideoSection() {
               </div>
               </div>
 
-            <Carousel style={{justifyContent:"center",alignSelf:'center',marginTop:55}}>
-        {videos ? (videos.map((k) => {
-      return(
 
-         
-         
-
-
-        <Carousel.Item>
-  
-
-
-<ReactPlayer url={k.url} muted={true} className="d-block w-100"/>
-
-
-  </Carousel.Item>
-  
-      
-      )
-    })) : (
-      <div>
-        <h4>
+              <div style={{marginTop:55}}>
+              <Grid container className={classes.root} spacing={4}>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center" spacing={spacing}>
+        {videos ? (videos.map((k) => (
+            <Grid onClick={()=> window.open(k.url, "_blank")} key={k.id} item>
+              <Img style={{height:170,width:115}} src={k.thumbnail} />
+            </Grid>
+        ))) : (
+          <h4>
           Loading .... 
         </h4>
-        </div>
-    )
-  }
-</Carousel>
+        )
+          }
+        </Grid>
+      </Grid>
+      </Grid>
+
+                </div>
+           
 
        
       </Container>

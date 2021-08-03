@@ -6,6 +6,7 @@ import 'react-awesome-slider/dist/styles.css';
 import tw from 'twin.macro' //eslint-disable-line
 import styled from "styled-components";
 import AnimationRevealPage from "../helpers/AnimationRevealPage.js";
+import Main from "./Layout/Main"
 
 import MainFeature from "../components/features/TwoColSingleFeatureWithStats2.js";
 import Features from "../components/features/DashedBorderSixFeatures";
@@ -67,6 +68,7 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 export default function Howitworks() {
     return (
         <AnimationRevealPage>
+            <Main chidren="about"/>
                <MainFeature />  
                <MainFeature2/>
                <div style={{marginTop:45}}>

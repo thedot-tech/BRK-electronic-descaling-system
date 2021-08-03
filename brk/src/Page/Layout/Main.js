@@ -12,7 +12,7 @@ export default function Main({chidren}) {
         <div>
             <Container>
         <Navbar bg="white" expand="lg">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
       <img
         src={Logo}
         width="auto"
@@ -23,70 +23,7 @@ export default function Main({chidren}) {
     </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="ml-auto">
-        {chidren == "home" ? (
-      <Nav.Link href="/"  active>Home </Nav.Link>
-
-        ) : (
-            <Nav.Link href="/">Home </Nav.Link>
-
-        )
-
-        }
-          {chidren == "about" ? (
-      <Nav.Link href="/about" active>About </Nav.Link>
-
-
-        ) : (
-            <Nav.Link href="/about">About </Nav.Link>
-
-
-        )
-
-        }
-         {chidren == "how" ? (
-        <Nav.Link href="/how"  active>How it works? </Nav.Link>
-
-
-
-        ) : (
-            <Nav.Link href="/how"  >How it works? </Nav.Link>
-
-
-
-        )
-
-        }
-         {chidren == "why" ? (
-          <Nav.Link href="/why"  active>Why us </Nav.Link>
-
-
-
-        ) : (
-            <Nav.Link href="/why" >Why us </Nav.Link>
-
-
-
-        )
-
-        }
-            {chidren == "contacts" ? (
-         <Nav.Link href="/contacts"  active>Contact </Nav.Link>
-
-
-
-
-        ) : (
-            <Nav.Link href="/contacts">Contact </Nav.Link>
-
-
-
-
-        )
-
-        }
-    </Nav>
-
+  
   </Navbar.Collapse>
 </Navbar>
 </Container>

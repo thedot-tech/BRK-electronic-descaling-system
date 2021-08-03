@@ -12,7 +12,7 @@ import MediaQuery from 'react-responsive'
 import POne from './pamphlet_one.jpeg'
 import PTwo from './pamphlet_two.jpeg'
 import { Card } from "react-bootstrap";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 const StyledHeader = styled(Header)
 `
   ${tw`pt-8 max-w-none`}
@@ -70,15 +70,15 @@ export default () => {
 
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="/about">
+      {/* <NavLink href="/about">
         About
-      </NavLink>
+      </NavLink> */}
       <NavLink href="/how">
         How it works?
       </NavLink>
-      <NavLink href="#">
+      {/* <NavLink href="#">
         Why us?
-      </NavLink>
+      </NavLink> */}
       <NavLink href="/contacts">
         Contacts
       </NavLink>

@@ -48,6 +48,9 @@ export default function AdminDash() {
     const [showDashs, setshowDash] = useState(false);
     const [logourl, setlogourl] = useState('');
 
+    const [logour2, setlogour2] = useState('');
+
+
 
     const [logo, setlogo] = useState(null);
 
@@ -55,6 +58,8 @@ export default function AdminDash() {
 
 
     const [logo1, setlogo1] = useState(null);
+    const [logo2, setlogo2] = useState(null);
+
 
     const handleThemeLogo = (e) => {
         setlogo(e.target.files[0])
@@ -62,10 +67,17 @@ export default function AdminDash() {
     const handleThemeLogo1 = (e) => {
         setlogo1(e.target.files[0])
     }
+    const handleThemeLogo2 = (e) => {
+      setlogo2(e.target.files[0])
+  }
     const [progress, setProgress] = useState(false);
     const [showFile, setshowFile] = useState(true)
     const [progress1, setProgress1] = useState(false);
+    const [progress2, setProgress2] = useState(false);
+
     const [showFile1, setshowFile1] = useState(true)
+    const [showFile3, setshowFile3] = useState(true)
+
     const [testimonyMain, settestimonyMain] = useState('');
     const [testimonyName, settestimonyName] = useState('');
     const [testimonyOccc, settestimonyOccc] = useState('');
@@ -130,13 +142,15 @@ export default function AdminDash() {
          .set(
            {  url,
              id:uid,
+             thumbnail:logour2,
              date:Date.now()}
          ).then(
             console.log("Saved Data"),
 
             seturl(''),
             setsuccess(true),
-
+            setlogour2(''),
+            setshowFile3(true)
             
 
          ).catch(err => 
@@ -271,7 +285,32 @@ export default function AdminDash() {
          ) 
     }
 
+    const uploadPic2 = (e) => {
+      e.preventDefault();
+      setProgress2(true)
+      setshowFile3(false)
+      let file = logo2;
+      var storage = firebase.storage();
+      var storageRef = storage.ref();
+      var uploadTask = storageRef.child(`video/pic/${file.name}`).put(file);
 
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          (snapshot) =>{
+            var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+
+          },(error) =>{
+            throw error
+          },() =>{
+            // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+      
+            uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+              setlogour2(url)
+              setProgress2(false)
+            })
+      
+         }
+       ) 
+  }
     const newsChangeHandler = (name) => event => {
         if(name === 'heading')
             setheading(event.target.value);
@@ -383,6 +422,36 @@ export default function AdminDash() {
        {
             return(
                 <Form>
+
+<div>
+  {showFile3 ? (
+<div>
+<Form>
+<Form.Group>
+<Form.File type="file" id="file" label="Upload client's profile pic" onChange={handleThemeLogo2}/>
+</Form.Group>
+</Form>
+<Button variant="contained" type="submit" variant="danger" style={{marginBottom:50}} onClick={uploadPic2}>
+Upload
+</Button>
+</div>
+) : (
+   (progress2 && !showFile3) ? (
+    <Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+
+   ) : (
+        <div>
+            <Alert severity="success">Logo upload done</Alert>
+            </div>
+   )
+
+   
+)
+
+}
+</div>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Add URL</Form.Label>
                   <Form.Control type="text" placeholder="Enter News Heading" value={url} onChange={newsChangeHandler('url')}/>
