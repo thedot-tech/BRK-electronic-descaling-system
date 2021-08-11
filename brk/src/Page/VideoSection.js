@@ -114,7 +114,7 @@ export default function VideoSection() {
         <Grid container justifyContent="center" spacing={spacing}>
         {videos ? (videos.map((k) => (
             <Grid onClick={()=> window.open(k.url, "_blank")} key={k.id} item>
-              <Img style={{height:220,width:150}} src={k.thumbnail} />
+              <Img style={{height:150,width:220,borderRadius:8}} src={k.thumbnail} />
             </Grid>
         ))) : (
           <h4>
